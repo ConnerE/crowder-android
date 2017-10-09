@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Crowder-Android</string>
+    <string name="onboard1">welcome to crowder</string>
+    <string name="onboard2">find a fun crowd\n...anywhere</string>
+    <string name="onboard3">Find your crowd - then connect!</string>
+
+    <color name="onboardColor">#ff6650</color>
+
+    <style name="alphaFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#0e2f44</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+</resources>
