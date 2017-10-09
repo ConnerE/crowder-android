@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Philip/Desktop/comp150/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="84b8608f8bd6e169abf8686f37795dd7c4869ea3">
+        <dex dex="/Users/Philip/Desktop/comp150/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_921efc44228c21002ee0f84f69c7ea9f40573458/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Philip/.android/build-cache/3f594c74dbe8f6ceff9c4b45a0e0e3babd618dbe/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6d65140c837f37580ee758c4f86906314580708f">
+        <dex dex="/Users/Philip/Desktop/comp150/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0aef4610cda788fbe92fd2069aa669b520aa8167/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Philip/Desktop/comp150/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/Philip/Desktop/comp150/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_d52892432eeb95075a3d36178ed925622b1fa3a7/classes.dex" />
+    </item>
+
+</items>
