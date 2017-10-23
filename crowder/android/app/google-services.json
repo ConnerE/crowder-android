@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "905371765275",
+    "firebase_url": "https://crowderbackend.firebaseio.com",
+    "project_id": "crowderbackend",
+    "storage_bucket": "crowderbackend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905371765275:android:84dcfadec9009da5",
+        "android_client_info": {
+          "package_name": "com.crowder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905371765275-6v473jd3spkl2uph0rdbfsged1vr3a5l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.crowder",
+            "certificate_hash": "24743469bd43fba844bb6ae56463343bdb4f3e6c"
+          }
+        },
+        {
+          "client_id": "905371765275-b0orkknr41cs30em0aunpcnjd41pv840.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD521IZ80Pv2KHSoMJOQNiCPc3UJMFC5gY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905371765275-b0orkknr41cs30em0aunpcnjd41pv840.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
