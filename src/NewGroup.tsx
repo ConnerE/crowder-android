@@ -19,7 +19,8 @@ import {
     Platform,
     BackHandler,
     StatusBar,
-    Dimensions
+    Dimensions,
+    TextInput
 } from 'react-native';
 
 import * as Swiper from 'react-native-swiper';
@@ -33,74 +34,76 @@ interface Props {
 }
 
 interface State {
-
+    address: string,
+    create_date: string,
+    creator_id: string,
+    desc: string;
+    lat: number;
+    lon: number;
+    name: string;
 }
 
 const rootRef = firebase.database().ref();
-const itemsRef = rootRef.child('users');
 const crowdsRef = rootRef.child('crowds');
 
-class Main extends React.Component<Props, State> {
+class NewGroup extends React.Component<Props, State> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            buttonClicked: false,
-        };
+
     }
 
     componentDidMount() {
-        this.checkIfExist();
+
     }
 
-    checkIfExist = () => {
-        itemsRef.child("phipWang").once('value', (snapshot) => {
-            if (snapshot.val() !== null) {
-                alert('Welcome Back');
-            } else {
-                this.props.navigation.navigate('NewUser');
-            }
+    submit = () => {
+        crowdsRef.push({
+            name: this.state.name,
+            desc: this.state.desc
         });
     };
 
-    clicked = () => {
-        this.props.navigation.navigate('NewGroup');
-    };
 
-    // TODO: Add flatlist to display all the available groups
-    getGroupInfo = () => {
-        crowdsRef.on('value', (snapshot) => {
-            console.log(snapshot.val());
-        });
-    };
-    // listenForItems = ()  => {
-    //     itemsRef.on('value', (snap) => {
-    //         // get children as an array
-    //         var items = [];
-    //         snap.forEach((child) => {
-    //             items.push({
-    //                 title: child.val().title,
-    //                 _key: child.key
-    //             });
-    //         });
-    //
-    //         this.setState({
-    //             dataSource: this.state.dataSource.cloneWithRows(items)
-    //         });
-    //
-    //     });
-    // };
 
     render() {
         return (
             <View style={{flex: 1}}>
                 <StatusBar hidden={true}/>
-                <Text>ssssssss</Text>
-                <TouchableOpacity onPress={this.clicked}>
-                    <Text>Add new group</Text>
+                <TextInput
+                    placeholder={"Name"}
+                    placeholderTextColor={'rgba(255,255,255,0.8)'}
+                    onChangeText={(name) => this.setState({name})}
+                    underlineColorAndroid='rgba(0,0,0,0)'
+                />
+                <TextInput
+                    placeholder={"Desc"}
+                    placeholderTextColor={'rgba(255,255,255,0.8)'}
+                    onChangeText={(desc) => this.setState({desc})}
+                    underlineColorAndroid='rgba(0,0,0,0)'
+                />
+                {/*<TextInput*/}
+                    {/*placeholder={"Full Name"}*/}
+                    {/*placeholderTextColor={'rgba(255,255,255,0.8)'}*/}
+                    {/*onChangeText={(full_name) => this.setState({full_name})}*/}
+                    {/*underlineColorAndroid='rgba(0,0,0,0)'*/}
+                {/*/>*/}
+                {/*<TextInput*/}
+                    {/*placeholder={"Job Title"}*/}
+                    {/*placeholderTextColor={'rgba(255,255,255,0.8)'}*/}
+                    {/*onChangeText={(job_title) => this.setState({job_title})}*/}
+                    {/*underlineColorAndroid='rgba(0,0,0,0)'*/}
+                {/*/>*/}
+                {/*<TextInput*/}
+                    {/*placeholder={"School"}*/}
+                    {/*placeholderTextColor={'rgba(255,255,255,0.8)'}*/}
+                    {/*onChangeText={(school) => this.setState({school})}*/}
+                    {/*underlineColorAndroid='rgba(0,0,0,0)'*/}
+                {/*/>*/}
+
+                <TouchableOpacity onPress={this.submit}>
+                    <Text>Submit</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this.getGroupInfo}>
-                    <Text>Get Group Info</Text>
-                </TouchableOpacity>
+
             </View>
         );
     }
@@ -175,4 +178,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Main;
+export default NewGroup;
