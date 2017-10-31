@@ -24,7 +24,6 @@ interface Props {
 
 interface State {
     messages: any[];
-    messageCounter: number;
 }
 
 
@@ -33,10 +32,10 @@ class CrowdChat extends React.Component<Props, State> {
         super(props);
         this.state = {
             messages: [],
-            messageCounter: 1
         };
 
-        this.listenToChat();
+        this.getChat();
+        // this.listenToChat();
     }
 
 
@@ -47,40 +46,54 @@ class CrowdChat extends React.Component<Props, State> {
 
     }
 
-    listenToChat = () => {
-        chatRef.on('value', (snapshot) => {
-            console.log(snapshot);
-            if (snapshot.val()) {
+    getChat = () => {
+        chatRef.limitToLast(20).on('child_added', (snapshot) => {
                 let returnObj = snapshot.val();
-                for (let key in returnObj) {
-                    this.setState({messageCounter: this.state.messageCounter + 1});
-                    console.log(returnObj);
-                    let newMessage = {
-                        _id: returnObj[key]._id,
-                        text: returnObj[key].text,
-                        createdAt: returnObj[key].createdAt,
-                        user: returnObj[key].user
-                    };
-                    this.setState((previousState) => ({
-                        messages: GiftedChat.append(previousState.messages, newMessage),
-                    }));
-                }
+                // console.log(returnObj);
+                let newMessage = {
+                    _id: returnObj._id,
+                    text: returnObj.text,
+                    createdAt: new Date(returnObj.createdAt),
+                    user: returnObj.user
+                };
+
+                this.setState((previousState) => ({
+                    messages: GiftedChat.append(previousState.messages, newMessage),
+                }));
+
             }
+        )
+    };
+
+    listenToChat = () => {
+        chatRef.on('child_added', (snapshot) => {
+            console.log(snapshot.val());
+            // if (snapshot.val()) {
+            //     let returnObj = snapshot.val();
+            //     for (let key in returnObj) {
+            //         this.setState({messageCounter: this.state.messageCounter + 1});
+            //         // console.log(returnObj);
+            //         let newMessage = {
+            //             _id: returnObj[key]._id,
+            //             text: returnObj[key].text,
+            //             createdAt: new Date(returnObj[key].createdAt),
+            //             user: returnObj[key].user
+            //         };
+            //         this.setState((previousState) => ({
+            //             messages: GiftedChat.append(previousState.messages, newMessage),
+            //         }));
+            //     }
+            // }
         });
     };
 
 
     onSend(messages = []) {
-        this.setState((previousState) => ({
-            messages: GiftedChat.append(previousState.messages, messages),
-        }));
-
-        console.log(messages);
         chatRef.push({
             _id: messages[0]._id,
             onscreenName: 'Philip',
             text: messages[0].text,
-            createdAt: messages[0].createdAt,
+            createdAt: messages[0].createdAt.toString(),
             user: messages[0].user
         });
     }
