@@ -89,6 +89,9 @@ class Main extends React.Component<Props, State> {
     //
     //     });
     // };
+    navigateToCrowd = () => {
+        this.props.navigation.navigate('CrowdChat');
+    };
 
     render() {
         return (
@@ -100,6 +103,9 @@ class Main extends React.Component<Props, State> {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.getGroupInfo}>
                     <Text>Get Group Info</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this.navigateToCrowd}>
+                    <Text>Chat Test</Text>
                 </TouchableOpacity>
             </View>
         );

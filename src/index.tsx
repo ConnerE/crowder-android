@@ -6,6 +6,7 @@ import LoginScreen from './LoginPage';
 import Main from './MainPage';
 import NewUser from './NewUser';
 import NewGroup from './NewGroup';
+import CrowdChat from './CrowdChat'
 
 
 const Navigator = StackNavigator({
@@ -13,6 +14,7 @@ const Navigator = StackNavigator({
     Main: {screen: Main},
     NewUser: {screen: NewUser},
     NewGroup: {screen: NewGroup},
+    CrowdChat: {screen: CrowdChat}
 }, {
     initialRouteName: 'Home',
 });
