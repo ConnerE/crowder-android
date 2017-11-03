@@ -61,13 +61,17 @@ class Login extends React.Component<Props, State> {
         };
     }
 
+    static navigationOptions = {
+        header: null
+    };
+
     loginPressed = () => {
         this.props.navigation.navigate('Main', {UUID: this.state.tempUUID});
     };
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={styles.container}>
                 <StatusBar hidden={true}/>
                 <View style={{flex: 0.65}}>
                     <Swiper style={styles.wrapper} horizontal={true} autoplay>
@@ -112,7 +116,7 @@ class Login extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
 
     wrapper: {
@@ -122,7 +126,7 @@ const styles = StyleSheet.create({
     slide: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
     },
 
     slide1: {
