@@ -25,7 +25,7 @@ import {
 } from 'react-native';
 
 import * as Swiper from 'react-native-swiper';
-import { SocialIcon } from 'react-native-elements'
+import { SocialIcon, Icon } from 'react-native-elements'
 const {width} = Dimensions.get('window');
 import * as firebase from 'firebase';
 import { List, ListItem, SearchBar } from "react-native-elements";
@@ -59,9 +59,26 @@ class Main extends React.Component<Props, State> {
         this.state = {};
     }
 
-    componentDidMount() {
-        this.checkIfExist();
+    static navigationOptions = ({navigation}) => {
+        return {
+            headerRight: <Icon name="add" color='#000000' size={35}
+                               onPress={() => {
+                                   if (navigation.state.params.addNewGroup != undefined) {
+                                       navigation.state.params.addNewGroup()
+                                   }
+                               }}/>,
+            title: 'Crowds',
+            gesturesEnabled: false,
+            headerStyle: {
+                marginTop: (Platform.OS === 'ios') ? -20 : 0,
+            },
+            headerLeft: null
+        };
+    };
 
+    componentDidMount() {
+        this.props.navigation.setParams({addNewGroup: this.addNewGroup.bind(this)});
+        this.checkIfExist();
     }
 
     checkIfExist = () => {
@@ -76,7 +93,7 @@ class Main extends React.Component<Props, State> {
         });
     };
 
-    clicked = () => {
+    addNewGroup = () => {
         this.props.navigation.navigate('NewGroup');
     };
 

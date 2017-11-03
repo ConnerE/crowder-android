@@ -61,6 +61,8 @@ class NewGroup extends React.Component<Props, State> {
             name: this.state.name,
             desc: this.state.desc
         });
+
+        this.props.navigation.goBack(null);
     };
 
 
