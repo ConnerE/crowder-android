@@ -19,13 +19,16 @@ import {
     Platform,
     BackHandler,
     StatusBar,
-    Dimensions
+    Dimensions,
+    FlatList,
+    SectionList,
 } from 'react-native';
 
 import * as Swiper from 'react-native-swiper';
 import { SocialIcon } from 'react-native-elements'
 const {width} = Dimensions.get('window');
 import * as firebase from 'firebase';
+import { List, ListItem, SearchBar } from "react-native-elements";
 
 
 interface Props {
@@ -33,23 +36,32 @@ interface Props {
 }
 
 interface State {
+}
 
+interface Crowd {
+    name: string,
+    key: string,
+    desc: string
 }
 
 const rootRef = firebase.database().ref();
 const itemsRef = rootRef.child('users');
 const crowdsRef = rootRef.child('crowds');
 
+var dataSource = [
+    {data: [], header: 'My Crowd'},
+    {data: [], header: 'Crowds that might interest you'}
+];
+
 class Main extends React.Component<Props, State> {
     constructor(props: any) {
         super(props);
-        this.state = {
-            buttonClicked: false,
-        };
+        this.state = {};
     }
 
     componentDidMount() {
         this.checkIfExist();
+
     }
 
     checkIfExist = () => {
@@ -57,7 +69,9 @@ class Main extends React.Component<Props, State> {
             if (snapshot.val() !== null) {
                 alert('Welcome Back');
             } else {
-                this.props.navigation.navigate('NewUser');
+                this.getGroupInfo();
+                // TODO: Add logic for welcoming new user
+                // this.props.navigation.navigate('NewUser');
             }
         });
     };
@@ -68,45 +82,39 @@ class Main extends React.Component<Props, State> {
 
     // TODO: Add flatlist to display all the available groups
     getGroupInfo = () => {
-        crowdsRef.on('value', (snapshot) => {
-            console.log(snapshot.val());
-        });
+        crowdsRef.limitToLast(20).on('child_added', (snapshot) => {
+                let returnObj = snapshot.val();
+                let newCrowd: Crowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
+                dataSource[0].data.push(newCrowd);
+                this.forceUpdate();
+                console.log(returnObj)
+            }
+        )
     };
-    // listenForItems = ()  => {
-    //     itemsRef.on('value', (snap) => {
-    //         // get children as an array
-    //         var items = [];
-    //         snap.forEach((child) => {
-    //             items.push({
-    //                 title: child.val().title,
-    //                 _key: child.key
-    //             });
-    //         });
-    //
-    //         this.setState({
-    //             dataSource: this.state.dataSource.cloneWithRows(items)
-    //         });
-    //
-    //     });
-    // };
-    navigateToCrowd = () => {
-        this.props.navigation.navigate('CrowdChat');
+
+    renderItem = (item) => {
+        return <TouchableOpacity onPress={() => this.navigateToCrowd(item.item.key, item.item.name)}>
+            <Text>{item.item.name}</Text>
+            </TouchableOpacity>
+    };
+
+    renderHeader = (item) => {
+        return <Text>{item.section.header}</Text>
+    };
+
+    navigateToCrowd = (crowdKey, crowdName) => {
+        this.props.navigation.navigate('CrowdChat', {key: crowdKey, crowdName: crowdName, UUID: this.props.navigation.state.params.UUID});
     };
 
     render() {
         return (
-            <View style={{flex: 1}}>
-                <StatusBar hidden={true}/>
-                <Text>ssssssss</Text>
-                <TouchableOpacity onPress={this.clicked}>
-                    <Text>Add new group</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this.getGroupInfo}>
-                    <Text>Get Group Info</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this.navigateToCrowd}>
-                    <Text>Chat Test</Text>
-                </TouchableOpacity>
+            <View style={styles.container}>
+                <SectionList
+                    renderItem={this.renderItem}
+                    renderSectionHeader={this.renderHeader}
+                    sections={dataSource}
+                    keyExtractor={(item) => item.name}
+                />
             </View>
         );
     }

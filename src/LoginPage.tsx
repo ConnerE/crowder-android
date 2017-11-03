@@ -19,7 +19,8 @@ import {
     Platform,
     BackHandler,
     StatusBar,
-    Dimensions
+    Dimensions,
+    TextInput
 } from 'react-native';
 
 import * as Swiper from 'react-native-swiper';
@@ -34,7 +35,7 @@ interface Props {
 }
 
 interface State {
-
+    tempUUID: string
 }
 
 // Initialize Firebase
@@ -56,12 +57,12 @@ class Login extends React.Component<Props, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            buttonClicked: false,
+            tempUUID: ''
         };
     }
 
     loginPressed = () => {
-        this.props.navigation.navigate('Main');
+        this.props.navigation.navigate('Main', {UUID: this.state.tempUUID});
     };
 
     render() {
@@ -85,6 +86,12 @@ class Login extends React.Component<Props, State> {
                     </Swiper>
                 </View>
                 <View style={styles.lowerView}>
+                    <TextInput
+                        placeholder={"Temp UUID"}
+                        placeholderTextColor={'rgba(255,255,255,0.8)'}
+                        onChangeText={(tempUUID) => this.setState({tempUUID})}
+                        underlineColorAndroid='rgba(0,0,0,0)'
+                    />
                     <SocialIcon
                         title='Sign In With Facebook'
                         button
