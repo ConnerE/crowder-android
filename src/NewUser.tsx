@@ -56,8 +56,8 @@ class NewUser extends React.Component<Props, State> {
     }
 
     submit = () => {
-        itemsRef.set({
-            userID: {
+        itemsRef.update({
+            [this.props.navigation.state.params.UUID]: {
                 about_me: this.state.about_me,
                 email: this.state.email,
                 full_name: this.state.full_name,
@@ -65,6 +65,8 @@ class NewUser extends React.Component<Props, State> {
                 school: this.state.school,
             },
         });
+
+
     };
 
 

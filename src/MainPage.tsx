@@ -82,13 +82,15 @@ class Main extends React.Component<Props, State> {
     }
 
     checkIfExist = () => {
-        itemsRef.child("phipWang").once('value', (snapshot) => {
+        itemsRef.child(this.props.navigation.state.params.UUID).once('value', (snapshot) => {
             if (snapshot.val() !== null) {
                 alert('Welcome Back');
+                this.getGroupInfo();
             } else {
                 this.getGroupInfo();
                 // TODO: Add logic for welcoming new user
-                // this.props.navigation.navigate('NewUser');
+                alert('Welcome New User!!');
+                this.props.navigation.navigate('NewUser', {UUID: this.props.navigation.state.params.UUID});
             }
         });
     };
