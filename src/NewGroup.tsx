@@ -1,14 +1,8 @@
-/* This is the login page for choosing the probes
- * Algo: The system will check whether the user has a preferred probe, if yes, scan the devices around, and if that
- * probe exists, connect to the probe automatically. After 10 seconds, the user will be about to choose other available
- * probes around, and the preferred probed will be changed automatically
- *
- * TODO: Catch all the errors / Get rid of all the weird warnings
- * TODO: Add color to the buttons next to the English description
- * by: Philip Wang
- * on: June 15th, 2017
- */
-
+//TODO: Chance the databse schema to include: creator, current members, lat, long, and radius
+//
+//
+//
+//
 import * as React from 'react';
 import {
     StyleSheet,
@@ -27,6 +21,8 @@ import * as Swiper from 'react-native-swiper';
 import { SocialIcon } from 'react-native-elements'
 const {width} = Dimensions.get('window');
 import * as firebase from 'firebase';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+
 
 
 interface Props {
@@ -57,12 +53,13 @@ class NewGroup extends React.Component<Props, State> {
     }
 
     submit = () => {
-        crowdsRef.push({
-            name: this.state.name,
-            desc: this.state.desc
-        });
+        // crowdsRef.push({
+        //     name: this.state.name,
+        //     desc: this.state.desc
+        // });
+        //
+        // this.props.navigation.goBack(null);
 
-        this.props.navigation.goBack(null);
     };
 
 
@@ -83,28 +80,46 @@ class NewGroup extends React.Component<Props, State> {
                     onChangeText={(desc) => this.setState({desc})}
                     underlineColorAndroid='rgba(0,0,0,0)'
                 />
-                {/*<TextInput*/}
-                    {/*placeholder={"Full Name"}*/}
-                    {/*placeholderTextColor={'rgba(255,255,255,0.8)'}*/}
-                    {/*onChangeText={(full_name) => this.setState({full_name})}*/}
-                    {/*underlineColorAndroid='rgba(0,0,0,0)'*/}
-                {/*/>*/}
-                {/*<TextInput*/}
-                    {/*placeholder={"Job Title"}*/}
-                    {/*placeholderTextColor={'rgba(255,255,255,0.8)'}*/}
-                    {/*onChangeText={(job_title) => this.setState({job_title})}*/}
-                    {/*underlineColorAndroid='rgba(0,0,0,0)'*/}
-                {/*/>*/}
-                {/*<TextInput*/}
-                    {/*placeholder={"School"}*/}
-                    {/*placeholderTextColor={'rgba(255,255,255,0.8)'}*/}
-                    {/*onChangeText={(school) => this.setState({school})}*/}
-                    {/*underlineColorAndroid='rgba(0,0,0,0)'*/}
-                {/*/>*/}
 
-                <TouchableOpacity onPress={this.submit}>
-                    <Text>Submit</Text>
-                </TouchableOpacity>
+                <GooglePlacesAutocomplete
+                    placeholder='Enter Location'
+                    minLength={2}
+                    autoFocus={false}
+                    returnKeyType={'default'}
+                    fetchDetails={true}
+                    styles={{
+                        textInputContainer: {
+                            backgroundColor: 'rgba(0,0,0,0)',
+                            borderTopWidth: 0,
+                            borderBottomWidth:0
+                        },
+                        textInput: {
+                            marginLeft: 0,
+                            marginRight: 0,
+                            height: 38,
+                            color: '#5d5d5d',
+                            fontSize: 16
+                        },
+                        predefinedPlacesDescription: {
+                            color: '#1faadb'
+                        },
+                    }}
+                    query={{
+                        // available options: https://developers.google.com/places/web-service/autocomplete
+                        key: 'AIzaSyCxbfxGUV05x6_Z0qVFmVBB1vIR1063aow',
+                        language: 'en', // language of the results
+                    }}
+                    onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+                        console.log(details.geometry.location);
+                    }}
+                    currentLocation={true}
+                />
+
+                <View style={styles.submitView}>
+                    <TouchableOpacity onPress={this.submit}>
+                        <Text>Submit</Text>
+                    </TouchableOpacity>
+                </View>
 
             </View>
         );
@@ -176,6 +191,10 @@ const styles = StyleSheet.create({
     textView: {
         marginLeft: 40,
         marginRight: 40,
+    },
+    submitView: {
+        position: 'absolute',
+        bottom: 0
     }
 
 });
