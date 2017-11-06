@@ -9,18 +9,21 @@
  * on: June 15th, 2017
  */
 
-import * as React from 'react';
+import * as React from "react";
 import {
+    Dimensions,
+    StatusBar,
     StyleSheet,
     Text,
+    TextInput,
     View,
     TouchableOpacity,
     DeviceEventEmitter,
     Platform,
     BackHandler,
-    StatusBar,
-    Dimensions,
-    TextInput
+
+
+
 } from 'react-native';
 
 import * as Swiper from 'react-native-swiper';
