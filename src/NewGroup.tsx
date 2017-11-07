@@ -46,9 +46,9 @@ class NewGroup extends React.Component<IProps, IState> {
 
     }
 
-    public componentDidMount() {
+//    public componentDidMount() {
 
-    }
+//    }
 
     public submit = () => {
         // crowdsRef.push({
@@ -84,11 +84,6 @@ class NewGroup extends React.Component<IProps, IState> {
                     returnKeyType={"default"}
                     fetchDetails={true}
                     styles={{
-                        textInputContainer: {
-                            backgroundColor: "rgba(0,0,0,0)",
-                            borderBottomWidth: 0,
-                            borderTopWidth: 0,
-                        },
                         textInput: {
                             color: "#5d5d5d",
                             fontSize: 16,
@@ -96,6 +91,12 @@ class NewGroup extends React.Component<IProps, IState> {
                             marginLeft: 0,
                             marginRight: 0,
                         },
+                        textInputContainer: {
+                            backgroundColor: "rgba(0,0,0,0)",
+                            borderBottomWidth: 0,
+                            borderTopWidth: 0,
+                        },
+
                         predefinedPlacesDescription: {
                             color: "#1faadb",
                         },
@@ -106,7 +107,7 @@ class NewGroup extends React.Component<IProps, IState> {
                         language: "en", // language of the results
                     }}
                     onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-                        console.log(details.geometry.location);
+                        // console.log(details.geometry.location);
                     }}
                     currentLocation={true}
                 />
@@ -127,8 +128,18 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
-    wrapper: {
+    image: {
+        flex: 1,
+    },
 
+    lowerText: {
+        color: "white",
+    },
+    lowerView : {
+        alignItems: "center",
+        backgroundColor: "#FFCD00",
+        flex: 0.35,
+        justifyContent: "center",
     },
 
     slide: {
@@ -164,33 +175,24 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
+    submitView: {
+        bottom: 0,
+        position: "absolute",
+    },
+
     text: {
         color: "#fff",
         fontSize: 30,
         fontWeight: "bold",
     },
-
-    image: {
-        flex: 1,
-    },
-    lowerView : {
-        alignItems: "center",
-        backgroundColor: "#FFCD00",
-        flex: 0.35,
-        justifyContent: "center",
-    },
-    lowerText: {
-        color: "white",
-    },
     textView: {
         marginLeft: 40,
         marginRight: 40,
     },
-    submitView: {
-        position: "absolute",
-        bottom: 0,
-    },
 
+    wrapper: {
+
+    },
 });
 
 export default NewGroup;

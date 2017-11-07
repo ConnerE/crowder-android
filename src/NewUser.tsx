@@ -33,11 +33,11 @@ interface IProps {
 }
 
 interface IState {
-    about_me: string;
+    aboutMe: string;
     email: string;
-    full_name: string;
-    job_title: string;
-    photo_url: string;
+    fullName: string;
+    jobTitle: string;
+    photoURL: string;
     school: string;
 }
 
@@ -50,15 +50,15 @@ class NewUser extends React.Component<IProps, IState> {
 
     }
 
-    public componentDidMount() {}
+    // public componentDidMount() {}
 
     public submit = () => {
         itemsRef.update({
             [this.props.navigation.state.params.UUID]: {
-                about_me: this.state.about_me,
+                about_me: this.state.aboutMe,
                 email: this.state.email,
-                full_name: this.state.full_name,
-                job_title: this.state.job_title,
+                full_name: this.state.fullName,
+                job_title: this.state.jobTitle,
                 school: this.state.school,
             },
         });
@@ -72,7 +72,7 @@ class NewUser extends React.Component<IProps, IState> {
                 <TextInput
                     placeholder={"About Me"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(about_me) => this.setState({about_me})}
+                    onChangeText={(aboutMe) => this.setState({aboutMe})}
                     underlineColorAndroid="rgba(0,0,0,0)"
                 />
                 <TextInput
@@ -84,13 +84,13 @@ class NewUser extends React.Component<IProps, IState> {
                 <TextInput
                     placeholder={"Full Name"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(full_name) => this.setState({full_name})}
+                    onChangeText={(fullName) => this.setState({fullName})}
                     underlineColorAndroid="rgba(0,0,0,0)"
                 />
                 <TextInput
                     placeholder={"Job Title"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(job_title) => this.setState({job_title})}
+                    onChangeText={(jobTitle) => this.setState({jobTitle})}
                     underlineColorAndroid="rgba(0,0,0,0)"
                 />
                 <TextInput

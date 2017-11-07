@@ -34,7 +34,7 @@ interface IProps {
     navigation: any;
 }
 
-interface IState {}
+// interface IState {}
 
 interface ICrowd {
     name: string;
@@ -104,7 +104,7 @@ class Main extends React.Component<IProps, IState> {
                 const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
                 dataSource[0].data.push(newCrowd);
                 this.forceUpdate();
-                console.log(returnObj);
+                // console.log(returnObj);
             },
         );
     }
