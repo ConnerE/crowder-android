@@ -11,8 +11,22 @@
 
 import * as React from 'react';
 import {
+<<<<<<< Updated upstream
     StyleSheet,
     Text,
+=======
+    BackHandler,
+    DeviceEventEmitter,
+    ImageBackground,
+    Dimensions,
+    Platform,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TextInput,
+    Touc
+    ImageBackground,hableOpacity,
+>>>>>>> Stashed changes
     View,
     TouchableOpacity,
     DeviceEventEmitter,
@@ -75,17 +89,49 @@ class Login extends React.Component<Props, State> {
                 <StatusBar hidden={true}/>
                 <View style={{flex: 0.65}}>
                     <Swiper style={styles.wrapper} horizontal={true} autoplay>
-                        <View style={styles.slide1}>
-                            <Text style={styles.text}>Welcome to Crownder</Text>
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require('./img/group1.jpg')}
+                                style={styles.image}
+                                >
+                            <Text style={styles.text}>Welcome to Crowder</Text>
+                            </ImageBackground>
                         </View>
-                        <View style={styles.slide2}>
-                            <Text style={styles.text}>I don't know what to write</Text>
+
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require('./img/group1.jpg')}
+                                style={styles.image}
+                            >
+                                <Text style={styles.text}>Explore around you</Text>
+                            </ImageBackground>
                         </View>
-                        <View style={styles.slide3}>
-                            <Text style={styles.text}>Conner is suppose to do this part</Text>
+
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require('./img/group1.jpg')}
+                                style={styles.image}
+                            >
+                                <Text style={styles.text}>Find stuff you're into</Text>
+                            </ImageBackground>
                         </View>
-                        <View style={styles.slide4}>
-                            <Text style={styles.text}>And yeaaa</Text>
+
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require('./img/group1.jpg')}
+                                style={styles.image}
+                            >
+                                <Text style={styles.text}>Meet a chill crowd</Text>
+                            </ImageBackground>
+                        </View>
+
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require('./img/group1.jpg')}
+                                style={styles.image}
+                            >
+                                <Text style={styles.text}>Welcome to Crownder</Text>
+                            </ImageBackground>
                         </View>
                     </Swiper>
                 </View>
@@ -116,7 +162,9 @@ class Login extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: "stretch",
         flex: 1,
+        justifyContent: "center",
     },
 
     wrapper: {
@@ -124,6 +172,7 @@ const styles = StyleSheet.create({
     },
 
     slide: {
+<<<<<<< Updated upstream
         flex: 1,
         justifyContent: 'center',
         backgroundColor: 'transparent',
@@ -137,12 +186,16 @@ const styles = StyleSheet.create({
     },
 
     slide2: {
+=======
+        alignItems: "stretch",
+>>>>>>> Stashed changes
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#97CAE5'
     },
 
+<<<<<<< Updated upstream
     slide3: {
         flex: 1,
         justifyContent: 'center',
@@ -150,12 +203,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#92BBD9'
     },
     slide4: {
+=======
+    image: {
+        alignItems: "center",
+>>>>>>> Stashed changes
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#92AAD9'
     },
 
+<<<<<<< Updated upstream
     text: {
         color: '#fff',
         fontSize: 30,
@@ -164,13 +222,31 @@ const styles = StyleSheet.create({
 
     image: {
         flex: 1
+=======
+    lowerText: {
+        color: "white",
+>>>>>>> Stashed changes
     },
     lowerView : {
+<<<<<<< Updated upstream
+=======
+        alignItems: "center",
+        backgroundColor: "#ef7c27",
+>>>>>>> Stashed changes
         flex: 0.35,
         backgroundColor: '#FFCD00',
         alignItems: 'center',
         justifyContent: 'center',
 
+<<<<<<< Updated upstream
+=======
+    text: {
+        color: "#fff",
+        fontSize: 30,
+        fontWeight: "bold",
+        justifyContent: "center",
+        textAlign: "center",
+>>>>>>> Stashed changes
     },
     lowerText: {
         color: 'white'
