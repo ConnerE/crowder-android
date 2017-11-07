@@ -9,123 +9,122 @@
  * on: June 15th, 2017
  */
 
-import * as React from 'react';
+import * as React from "react";
 import {
-    StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
-    DeviceEventEmitter,
-    Platform,
     BackHandler,
-    StatusBar,
+    DeviceEventEmitter,
     Dimensions,
     FlatList,
+    Platform,
     SectionList,
-} from 'react-native';
+    StatusBar,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
-import * as Swiper from 'react-native-swiper';
-import { SocialIcon, Icon } from 'react-native-elements'
-const {width} = Dimensions.get('window');
-import * as firebase from 'firebase';
+import { Icon, SocialIcon } from "react-native-elements";
+import * as Swiper from "react-native-swiper";
+const {width} = Dimensions.get("window");
+import * as firebase from "firebase";
 import { List, ListItem, SearchBar } from "react-native-elements";
 
-
-interface Props {
+interface IProps {
     navigation: any;
 }
 
-interface State {
-}
+interface IState {}
 
-interface Crowd {
-    name: string,
-    key: string,
-    desc: string
+interface ICrowd {
+    name: string;
+    key: string;
+    desc: string;
 }
 
 const rootRef = firebase.database().ref();
-const itemsRef = rootRef.child('users');
-const crowdsRef = rootRef.child('crowds');
+const itemsRef = rootRef.child("users");
+const crowdsRef = rootRef.child("crowds");
 
-var dataSource = [
-    {data: [], header: 'My Crowd'},
-    {data: [], header: 'Crowds that might interest you'}
+const dataSource = [
+    {data: [], header: "My Crowd"},
+    {data: [], header: "Crowds that might interest you"},
 ];
 
-class Main extends React.Component<Props, State> {
+class Main extends React.Component<IProps, IState> {
+    public static navigationOptions = ({navigation}) => {
+        return {
+            gesturesEnabled: false,
+            headerLeft: null,
+            headerRight: <Icon name="add" color="#000000" size={35}
+                               onPress={() => {
+                                   if (navigation.state.params.addNewGroup !== undefined) {
+                                       navigation.state.params.addNewGroup();
+                                   }
+                               }}/>,
+            headerStyle: {
+                marginTop: (Platform.OS === "ios") ? -20 : 0,
+                title: "Crowds",
+            },
+        };
+    }
+
     constructor(props: any) {
         super(props);
         this.state = {};
     }
 
-    static navigationOptions = ({navigation}) => {
-        return {
-            headerRight: <Icon name="add" color='#000000' size={35}
-                               onPress={() => {
-                                   if (navigation.state.params.addNewGroup != undefined) {
-                                       navigation.state.params.addNewGroup()
-                                   }
-                               }}/>,
-            title: 'Crowds',
-            gesturesEnabled: false,
-            headerStyle: {
-                marginTop: (Platform.OS === 'ios') ? -20 : 0,
-            },
-            headerLeft: null
-        };
-    };
-
-    componentDidMount() {
+    public componentDidMount() {
         this.props.navigation.setParams({addNewGroup: this.addNewGroup.bind(this)});
         this.checkIfExist();
     }
 
-    checkIfExist = () => {
-        itemsRef.child(this.props.navigation.state.params.UUID).once('value', (snapshot) => {
+    public checkIfExist = () => {
+        itemsRef.child(this.props.navigation.state.params.UUID).once("value", (snapshot) => {
             if (snapshot.val() !== null) {
-                alert('Welcome Back');
+                alert("Welcome Back");
                 this.getGroupInfo();
             } else {
                 this.getGroupInfo();
                 // TODO: Add logic for welcoming new user
-                alert('Welcome New User!!');
-                this.props.navigation.navigate('NewUser', {UUID: this.props.navigation.state.params.UUID});
+                alert("Welcome New User!!");
+                this.props.navigation.navigate("NewUser", {UUID: this.props.navigation.state.params.UUID});
             }
         });
-    };
+    }
 
-    addNewGroup = () => {
-        this.props.navigation.navigate('NewGroup');
-    };
+    public addNewGroup = () => {
+        this.props.navigation.navigate("NewGroup");
+    }
 
     // TODO: Add flatlist to display all the available groups
-    getGroupInfo = () => {
-        crowdsRef.limitToLast(20).on('child_added', (snapshot) => {
-                let returnObj = snapshot.val();
-                let newCrowd: Crowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
+    public getGroupInfo = () => {
+        crowdsRef.limitToLast(20).on("child_added", (snapshot) => {
+                const returnObj = snapshot.val();
+                const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
                 dataSource[0].data.push(newCrowd);
                 this.forceUpdate();
-                console.log(returnObj)
-            }
-        )
-    };
+                console.log(returnObj);
+            },
+        );
+    }
 
-    renderItem = (item) => {
+    public renderItem = (item) => {
         return <TouchableOpacity onPress={() => this.navigateToCrowd(item.item.key, item.item.name)}>
             <Text>{item.item.name}</Text>
-            </TouchableOpacity>
-    };
+            </TouchableOpacity>;
+    }
 
-    renderHeader = (item) => {
-        return <Text>{item.section.header}</Text>
-    };
+    public renderHeader = (item) => {
+        return <Text>{item.section.header}</Text>;
+    }
 
-    navigateToCrowd = (crowdKey, crowdName) => {
-        this.props.navigation.navigate('CrowdChat', {key: crowdKey, crowdName: crowdName, UUID: this.props.navigation.state.params.UUID});
-    };
+    public navigateToCrowd = (crowdKey, crowdName) => {
+        this.props.navigation.navigate("CrowdChat", {key: crowdKey, crowdName,
+                                                     UUID: this.props.navigation.state.params.UUID});
+    }
 
-    render() {
+    public render() {
         return (
             <View style={styles.container}>
                 <SectionList
@@ -139,73 +138,75 @@ class Main extends React.Component<Props, State> {
     }
 }
 
-
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+    },
+
+    image: {
+        flex: 1,
+    },
+
+    lowerText: {
+        color: "white",
+    },
+
+    lowerView : {
+        alignItems: "center",
+        backgroundColor: "#FFCD00",
+        flex: 0.35,
+        justifyContent: "center",
+
+    },
+
+    slide: {
+        backgroundColor: "transparent",
+        flex: 1,
+        justifyContent: "center",
+
+    },
+
+    slide1: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
+        flex: 1,
+        justifyContent: "center",
+    },
+
+    slide2: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
+        flex: 1,
+        justifyContent: "center",
+    },
+
+    slide3: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
+        flex: 1,
+        justifyContent: "center",
+    },
+    slide4: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
+        flex: 1,
+        justifyContent: "center",
+    },
+
+    text: {
+        color: "#fff",
+        fontSize: 30,
+        fontWeight: "bold",
+    },
+
+    textView: {
+        marginLeft: 40,
+        marginRight: 40,
     },
 
     wrapper: {
 
     },
-
-    slide: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'transparent'
-    },
-
-    slide1: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB'
-    },
-
-    slide2: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5'
-    },
-
-    slide3: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9'
-    },
-    slide4: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92AAD9'
-    },
-
-    text: {
-        color: '#fff',
-        fontSize: 30,
-        fontWeight: 'bold'
-    },
-
-    image: {
-        flex: 1
-    },
-    lowerView : {
-        flex: 0.35,
-        backgroundColor: '#FFCD00',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-    },
-    lowerText: {
-        color: 'white'
-    },
-    textView: {
-        marginLeft: 40,
-        marginRight: 40,
-    }
-
 });
 
 export default Main;

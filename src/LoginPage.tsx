@@ -11,34 +11,31 @@
 
 import * as React from "react";
 import {
+    BackHandler,
+    DeviceEventEmitter,
     Dimensions,
+    Platform,
     StatusBar,
     StyleSheet,
     Text,
     TextInput,
-    View,
     TouchableOpacity,
-    DeviceEventEmitter,
-    Platform,
-    BackHandler,
+    View,
 
+} from "react-native";
 
-
-} from 'react-native';
-
-import * as Swiper from 'react-native-swiper';
-import { SocialIcon } from 'react-native-elements'
-const {width} = Dimensions.get('window');
-import * as firebase from 'firebase';
+import { SocialIcon } from "react-native-elements";
+import * as Swiper from "react-native-swiper";
+const {width} = Dimensions.get("window");
+import * as firebase from "firebase";
 // import { AccessToken, LoginManager } from 'react-native-fbsdk';
 
-
-interface Props {
+interface IProps {
     navigation: any;
 }
 
-interface State {
-    tempUUID: string
+interface IState {
+    tempUUID: string;
 }
 
 // Initialize Firebase
@@ -46,33 +43,34 @@ const firebaseConfig = {
     apiKey: "AIzaSyC6RniCY4_KIkjHTUI6QNguw2TgKJZNKVA",
     authDomain: "crowderweb.firebaseapp.com",
     databaseURL: "https://crowderweb.firebaseio.com",
+    messagingSenderId: "744758366305",
     projectId: "crowderweb",
     storageBucket: "",
-    messagingSenderId: "744758366305"
 };
 firebase.initializeApp(firebaseConfig);
 
 // Create a reference with .ref() instead of new Firebase(url)
 const rootRef = firebase.database().ref();
-const itemsRef = rootRef.child('items');
+const itemsRef = rootRef.child("items");
 
-class Login extends React.Component<Props, State> {
+class Login extends React.Component<IProps, IState> {
+
+    public static navigationOptions = {
+        header: null,
+    };
+
     constructor(props: any) {
         super(props);
         this.state = {
-            tempUUID: ''
+            tempUUID: "",
         };
     }
 
-    static navigationOptions = {
-        header: null
-    };
+    public loginPressed = () => {
+        this.props.navigation.navigate("Main", {UUID: this.state.tempUUID});
+    }
 
-    loginPressed = () => {
-        this.props.navigation.navigate('Main', {UUID: this.state.tempUUID});
-    };
-
-    render() {
+    public render() {
         return (
             <View style={styles.container}>
                 <StatusBar hidden={true}/>
@@ -95,27 +93,26 @@ class Login extends React.Component<Props, State> {
                 <View style={styles.lowerView}>
                     <TextInput
                         placeholder={"Temp UUID"}
-                        placeholderTextColor={'rgba(255,255,255,0.8)'}
+                        placeholderTextColor={"rgba(255,255,255,0.8)"}
                         onChangeText={(tempUUID) => this.setState({tempUUID})}
-                        underlineColorAndroid='rgba(0,0,0,0)'
+                        underlineColorAndroid="rgba(0,0,0,0)"
                     />
                     <SocialIcon
-                        title='Sign In With Facebook'
+                        title="Sign In With Facebook"
                         button
-                        type='facebook'
+                        type="facebook"
                         style={{width: width - 40, marginBottom: 40}}
                         onPress={this.loginPressed}
                     />
                     <View style={styles.textView}>
-                        <Text style={styles.lowerText}>We use facebook to identify whether you are a human or a zombie.</Text>
-                        <Text style={styles.lowerText}>In our experience, zombies tend to eat human brains, and well we don’t want that in our crowds.</Text>
+                        <Text style={styles.lowerText}>We use facebook to identify whether you are a zombie.</Text>
+                        <Text style={styles.lowerText}>In our experience, zombies don't do well in crowds.</Text>
                     </View>
                 </View>
             </View>
         );
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -127,61 +124,63 @@ const styles = StyleSheet.create({
     },
 
     slide: {
+        backgroundColor: "transparent",
         flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'transparent',
+        justifyContent: "center",
     },
 
     slide1: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB'
+        justifyContent: "center",
     },
 
     slide2: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5'
+        justifyContent: "center",
     },
 
     slide3: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9'
+        justifyContent: "center",
     },
     slide4: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92AAD9'
-    },
-
-    text: {
-        color: '#fff',
-        fontSize: 30,
-        fontWeight: 'bold'
+        justifyContent: "center",
     },
 
     image: {
-        flex: 1
+        flex: 1,
     },
-    lowerView : {
-        flex: 0.35,
-        backgroundColor: '#FFCD00',
-        alignItems: 'center',
-        justifyContent: 'center',
 
-    },
     lowerText: {
-        color: 'white'
+        color: "white",
     },
+
+    lowerView : {
+        alignItems: "center",
+        backgroundColor: "#FFCD00",
+        flex: 0.35,
+        justifyContent: "center",
+    },
+
+    text: {
+        color: "#fff",
+        fontSize: 30,
+        fontWeight: "bold",
+    },
+
     textView: {
         marginLeft: 40,
         marginRight: 40,
-    }
+    },
 
 });
 

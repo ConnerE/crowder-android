@@ -1,38 +1,36 @@
-//TODO: Chance the databse schema to include: creator, current members, lat, long, and radius
+// TODO: Chance the databse schema to include: creator, current members, lat, long, and radius
 //
 //
 //
 //
-import * as React from 'react';
+import * as React from "react";
 import {
+    BackHandler,
+    DeviceEventEmitter,
+    Dimensions,
+    Platform,
+    StatusBar,
     StyleSheet,
     Text,
-    View,
+    TextInput,
     TouchableOpacity,
-    DeviceEventEmitter,
-    Platform,
-    BackHandler,
-    StatusBar,
-    Dimensions,
-    TextInput
-} from 'react-native';
+    View,
+} from "react-native";
 
-import * as Swiper from 'react-native-swiper';
-import { SocialIcon } from 'react-native-elements'
-const {width} = Dimensions.get('window');
-import * as firebase from 'firebase';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { SocialIcon } from "react-native-elements";
+import * as Swiper from "react-native-swiper";
+const {width} = Dimensions.get("window");
+import * as firebase from "firebase";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
-
-
-interface Props {
+interface IProps {
     navigation: any;
 }
 
-interface State {
-    address: string,
-    create_date: string,
-    creator_id: string,
+interface IState {
+    address: string;
+    create_date: string;
+    creator_id: string;
     desc: string;
     lat: number;
     lon: number;
@@ -40,19 +38,19 @@ interface State {
 }
 
 const rootRef = firebase.database().ref();
-const crowdsRef = rootRef.child('crowds');
+const crowdsRef = rootRef.child("crowds");
 
-class NewGroup extends React.Component<Props, State> {
+class NewGroup extends React.Component<IProps, IState> {
     constructor(props: any) {
         super(props);
 
     }
 
-    componentDidMount() {
+    public componentDidMount() {
 
     }
 
-    submit = () => {
+    public submit = () => {
         // crowdsRef.push({
         //     name: this.state.name,
         //     desc: this.state.desc
@@ -60,54 +58,52 @@ class NewGroup extends React.Component<Props, State> {
         //
         // this.props.navigation.goBack(null);
 
-    };
+    }
 
-
-
-    render() {
+    public render() {
         return (
             <View style={{flex: 1}}>
                 <StatusBar hidden={true}/>
                 <TextInput
                     placeholder={"Name"}
-                    placeholderTextColor={'rgba(255,255,255,0.8)'}
+                    placeholderTextColor={"rgba(255,255,255,0.8)"}
                     onChangeText={(name) => this.setState({name})}
-                    underlineColorAndroid='rgba(0,0,0,0)'
+                    underlineColorAndroid="rgba(0,0,0,0)"
                 />
                 <TextInput
                     placeholder={"Desc"}
-                    placeholderTextColor={'rgba(255,255,255,0.8)'}
+                    placeholderTextColor={"rgba(255,255,255,0.8)"}
                     onChangeText={(desc) => this.setState({desc})}
-                    underlineColorAndroid='rgba(0,0,0,0)'
+                    underlineColorAndroid="rgba(0,0,0,0)"
                 />
 
                 <GooglePlacesAutocomplete
-                    placeholder='Enter Location'
+                    placeholder="Enter Location"
                     minLength={2}
                     autoFocus={false}
-                    returnKeyType={'default'}
+                    returnKeyType={"default"}
                     fetchDetails={true}
                     styles={{
                         textInputContainer: {
-                            backgroundColor: 'rgba(0,0,0,0)',
+                            backgroundColor: "rgba(0,0,0,0)",
+                            borderBottomWidth: 0,
                             borderTopWidth: 0,
-                            borderBottomWidth:0
                         },
                         textInput: {
+                            color: "#5d5d5d",
+                            fontSize: 16,
+                            height: 38,
                             marginLeft: 0,
                             marginRight: 0,
-                            height: 38,
-                            color: '#5d5d5d',
-                            fontSize: 16
                         },
                         predefinedPlacesDescription: {
-                            color: '#1faadb'
+                            color: "#1faadb",
                         },
                     }}
                     query={{
                         // available options: https://developers.google.com/places/web-service/autocomplete
-                        key: 'AIzaSyCxbfxGUV05x6_Z0qVFmVBB1vIR1063aow',
-                        language: 'en', // language of the results
+                        key: "AIzaSyCxbfxGUV05x6_Z0qVFmVBB1vIR1063aow",
+                        language: "en", // language of the results
                     }}
                     onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
                         console.log(details.geometry.location);
@@ -126,10 +122,9 @@ class NewGroup extends React.Component<Props, State> {
     }
 }
 
-
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
 
     wrapper: {
@@ -137,65 +132,64 @@ const styles = StyleSheet.create({
     },
 
     slide: {
+        backgroundColor: "transparent",
         flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'transparent'
+        justifyContent: "center",
     },
 
     slide1: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB'
+        justifyContent: "center",
     },
 
     slide2: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5'
+        justifyContent: "center",
     },
 
     slide3: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9'
+        justifyContent: "center",
     },
     slide4: {
+        alignItems: "center",
+        backgroundColor: "#9DD6EB",
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92AAD9'
+        justifyContent: "center",
     },
 
     text: {
-        color: '#fff',
+        color: "#fff",
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight: "bold",
     },
 
     image: {
-        flex: 1
+        flex: 1,
     },
     lowerView : {
+        alignItems: "center",
+        backgroundColor: "#FFCD00",
         flex: 0.35,
-        backgroundColor: '#FFCD00',
-        alignItems: 'center',
-        justifyContent: 'center',
-
+        justifyContent: "center",
     },
     lowerText: {
-        color: 'white'
+        color: "white",
     },
     textView: {
         marginLeft: 40,
         marginRight: 40,
     },
     submitView: {
-        position: 'absolute',
-        bottom: 0
-    }
+        position: "absolute",
+        bottom: 0,
+    },
 
 });
 

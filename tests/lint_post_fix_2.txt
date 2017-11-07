@@ -1,0 +1,17 @@
+
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[37, 11]: An empty interface is equivalent to `{}`.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[107, 17]: Calls to 'console.log' are not allowed.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[123, 69]: The key 'crowdName' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[49, 32]: block is empty
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[92, 25]: The key 'textInput' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[109, 25]: Calls to 'console.log' are not allowed.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[137, 9]: The key 'backgroundColor' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[182, 5]: The key 'lowerText' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[191, 9]: The key 'bottom' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[53, 32]: block is empty
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[75, 36]: variable name must be in lowerCamelCase, PascalCase or UPPER_CASE
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[87, 36]: variable name must be in lowerCamelCase, PascalCase or UPPER_CASE
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[93, 36]: variable name must be in lowerCamelCase, PascalCase or UPPER_CASE
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[170, 5]: The key 'lowerText' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[15, 5]: The key 'NewGroup' is not sorted alphabetically
+
