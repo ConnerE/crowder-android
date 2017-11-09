@@ -1,18 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 import {
     StyleSheet,
     Text,
-    View,
     TouchableOpacity,
     DeviceEventEmitter,
     Platform,
     BackHandler,
     StatusBar,
+    View,
     Dimensions,
-    TextInput
-} from 'react-native';
+    TextInput,
+} from "react-native";
 
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 import { GiftedChat } from 'react-native-gifted-chat';
 const rootRef = firebase.database().ref();
 const chatChanelRef = rootRef.child('chat_chanel');
@@ -35,7 +35,7 @@ class CrowdChat extends React.Component<Props, State> {
             messages: [],
         };
         this.props.navigation.setParams({title: this.props.navigation.state.params.crowdName});
-        this.chatRef = chatChanelRef.child(this.props.navigation.state.params.key)
+        this.chatRef = chatChanelRef.child(this.props.navigation.state.params.key);
     }
 
     chatRef: any;

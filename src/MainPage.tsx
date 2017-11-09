@@ -58,7 +58,7 @@ Crashlytics.setUserEmail('conner.erickson@tufts.edu');
 
 Crashlytics.setUserIdentifier('1234');
 
-//Crashlytics.setBool('has_posted', 'Tufts University');
+// Crashlytics.setBool('has_posted', 'Tufts University');
 
 const rootRef = firebase.database().ref();
 const itemsRef = rootRef.child('users');
