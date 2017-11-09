@@ -89,7 +89,7 @@ class Login extends React.Component<IProps, IState> {
 
                         <View style={styles.slide}>
                             <ImageBackground
-                                source={require('./img/group1.jpg')}
+                                source={require('./img/group2.jpg')}
                                 style={styles.image}
                             >
                                 <Text style={styles.text}>Explore around you</Text>
@@ -98,7 +98,7 @@ class Login extends React.Component<IProps, IState> {
 
                         <View style={styles.slide}>
                             <ImageBackground
-                                source={require('./img/group1.jpg')}
+                                source={require('./img/group3.jpg')}
                                 style={styles.image}
                             >
                                 <Text style={styles.text}>Find stuff you're into</Text>
@@ -107,21 +107,13 @@ class Login extends React.Component<IProps, IState> {
 
                         <View style={styles.slide}>
                             <ImageBackground
-                                source={require('./img/group1.jpg')}
+                                source={require('./img/group4.jpg')}
                                 style={styles.image}
                             >
                                 <Text style={styles.text}>Meet a chill crowd</Text>
                             </ImageBackground>
                         </View>
 
-                        <View style={styles.slide}>
-                            <ImageBackground
-                                source={require('./img/group1.jpg')}
-                                style={styles.image}
-                            >
-                                <Text style={styles.text}>Welcome to Crownder</Text>
-                            </ImageBackground>
-                        </View>
                     </Swiper>
                 </View>
                 <View style={styles.lowerView}>
@@ -184,7 +176,7 @@ const styles = StyleSheet.create({
 
     text: {
         color: "#fff",
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: "bold",
         justifyContent: "center",
         textAlign: "center",

@@ -30,6 +30,8 @@ const {width} = Dimensions.get('window');
 import * as firebase from 'firebase';
 import { List, ListItem, SearchBar } from "react-native-elements";
 
+import _ from 'lodash';
+
 
 interface Props {
     navigation: any;
@@ -49,8 +51,8 @@ const itemsRef = rootRef.child('users');
 const crowdsRef = rootRef.child('crowds');
 
 var dataSource = [
-    {data: [], header: 'My Crowd'},
-    {data: [], header: 'Crowds that might interest you'}
+    {data: [], header: 'Your Crowds'},
+    {data: [], header: 'Explore Crowds'}
 ];
 
 class Main extends React.Component<Props, State> {
@@ -113,12 +115,14 @@ class Main extends React.Component<Props, State> {
 
     renderItem = (item) => {
         return <TouchableOpacity onPress={() => this.navigateToCrowd(item.item.key, item.item.name)}>
-            <Text>{item.item.name}</Text>
+            <View style={styles.group}>
+                <Text style={styles.text}> {item.item.name}</Text>
+            </View>
             </TouchableOpacity>
     };
 
     renderHeader = (item) => {
-        return <Text>{item.section.header}</Text>
+        return <Text style={styles.header}>{item.section.header}</Text>
     };
 
     navigateToCrowd = (crowdKey, crowdName) => {
@@ -142,65 +146,36 @@ class Main extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        justifyContent: "center",
+        backgroundColor: "#F3FCFF",
+        padding: 20,
+        paddingTop: 40,
+
+    },
+
+    group: {
+        alignSelf: "stretch",
+        backgroundColor: '#fd9d64',
+        height: 50,
+        marginBottom: 5,
+    },
+
+    header: {
+        fontFamily: 'sans-serif-thin',
+        fontSize: 30,
     },
 
     wrapper: {
 
     },
 
-    slide: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'transparent'
-    },
-
-    slide1: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB'
-    },
-
-    slide2: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5'
-    },
-
-    slide3: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9'
-    },
-    slide4: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92AAD9'
-    },
-
     text: {
-        color: '#fff',
+        color: '#000000',
         fontSize: 30,
         fontWeight: 'bold'
     },
 
-    image: {
-        flex: 1
-    },
-    lowerView : {
-        flex: 0.35,
-        backgroundColor: '#FFCD00',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-    },
-    lowerText: {
-        color: 'white'
-    },
     textView: {
         marginLeft: 40,
         marginRight: 40,
