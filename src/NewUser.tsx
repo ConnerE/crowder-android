@@ -28,11 +28,11 @@ import * as Swiper from "react-native-swiper";
 const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
 
-interface Props {
+interface IProps {
     navigation: any;
 }
 
-interface State {
+interface IState {
     about_me: string;
     email: string;
     full_name: string;
@@ -44,23 +44,23 @@ interface State {
 const rootRef = firebase.database().ref();
 const itemsRef = rootRef.child("users");
 
-class NewUser extends React.Component<Props, State> {
+class NewUser extends React.Component<IProps, IState> {
     constructor(props: any) {
         super(props);
 
     }
 
-    public componentDidMount() {
+    // public componentDidMount() {
 
-    }
+    // }
 
     public submit = () => {
         itemsRef.update({
             [this.props.navigation.state.params.UUID]: {
-                about_me: this.state.about_me,
+                aboutMe: this.state.about_me,
                 email: this.state.email,
-                full_name: this.state.full_name,
-                job_title: this.state.job_title,
+                fullName: this.state.full_name,
+                jobTitle: this.state.job_title,
                 school: this.state.school,
             },
         });
@@ -74,7 +74,7 @@ class NewUser extends React.Component<Props, State> {
                 <TextInput
                     placeholder={"About Me"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(about_me) => this.setState({about_me})}
+                    onChangeText={(aboutMe) => this.setState({aboutMe})}
                     underlineColorAndroid="rgba(0,0,0,0)"
                 />
                 <TextInput
@@ -86,13 +86,13 @@ class NewUser extends React.Component<Props, State> {
                 <TextInput
                     placeholder={"Full Name"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(full_name) => this.setState({full_name})}
+                    onChangeText={(fullName) => this.setState({fullName})}
                     underlineColorAndroid="rgba(0,0,0,0)"
                 />
                 <TextInput
                     placeholder={"Job Title"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(job_title) => this.setState({job_title})}
+                    onChangeText={(JobTitle) => this.setState({JobTitle})}
                     underlineColorAndroid="rgba(0,0,0,0)"
                 />
                 <TextInput
@@ -120,39 +120,6 @@ const styles = StyleSheet.create({
 
     },
 
-    slide: {
-        flex: 1,
-        justifyContent: "center",
-        backgroundColor: "transparent",
-    },
-
-    slide1: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#9DD6EB",
-    },
-
-    slide2: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#97CAE5",
-    },
-
-    slide3: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#92BBD9",
-    },
-    slide4: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#92AAD9",
-    },
-
     text: {
         color: "#fff",
         fontSize: 30,
@@ -162,16 +129,7 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
     },
-    lowerView : {
-        flex: 0.35,
-        backgroundColor: "#FFCD00",
-        alignItems: "center",
-        justifyContent: "center",
 
-    },
-    lowerText: {
-        color: "white",
-    },
     textView: {
         marginLeft: 40,
         marginRight: 40,

@@ -1,4 +1,4 @@
-//TODO: Chance the databse schema to include: creator, current members, lat, long, and radius
+// TODO: Chance the databse schema to include: creator, current members, lat, long, and radius
 //
 //
 //
@@ -23,11 +23,11 @@ const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
-interface Props {
+interface IProps {
     navigation: any;
 }
 
-interface State {
+interface IState {
     address: string;
     create_date: string;
     creator_id: string;
@@ -40,15 +40,15 @@ interface State {
 const rootRef = firebase.database().ref();
 const crowdsRef = rootRef.child("crowds");
 
-class NewGroup extends React.Component<Props, State> {
+class NewGroup extends React.Component<IProps, IState> {
     constructor(props: any) {
         super(props);
 
     }
 
-    public componentDidMount() {
+    // public componentDidMount() {
 
-    }
+    // }
 
     public submit = () => {
         // crowdsRef.push({
@@ -84,20 +84,20 @@ class NewGroup extends React.Component<Props, State> {
                     returnKeyType={"default"}
                     fetchDetails={true}
                     styles={{
-                        textInputContainer: {
-                            backgroundColor: "rgba(0,0,0,0)",
-                            borderTopWidth: 0,
-                            borderBottomWidth: 0,
-                        },
-                        textInput: {
-                            marginLeft: 0,
-                            marginRight: 0,
-                            height: 38,
-                            color: "#5d5d5d",
-                            fontSize: 16,
-                        },
                         predefinedPlacesDescription: {
                             color: "#1faadb",
+                        },
+                        textInput: {
+                            color: "#5d5d5d",
+                            fontSize: 16,
+                            height: 38,
+                            marginLeft: 0,
+                            marginRight: 0,
+                        },
+                        textInputContainer: {
+                            backgroundColor: "rgba(0,0,0,0)",
+                            borderBottomWidth: 0,
+                            borderTopWidth: 0,
                         },
                     }}
                     query={{
@@ -106,7 +106,7 @@ class NewGroup extends React.Component<Props, State> {
                         language: "en", // language of the results
                     }}
                     onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-                        console.log(details.geometry.location);
+                        // console.log(details.geometry.location);
                     }}
                     currentLocation={true}
                 />
@@ -126,72 +126,29 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-
-    wrapper: {
-
+    image: {
+        flex: 1,
     },
-
     slide: {
-        flex: 1,
-        justifyContent: "center",
         backgroundColor: "transparent",
-    },
-
-    slide1: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#9DD6EB",
     },
-
-    slide2: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#97CAE5",
+    submitView: {
+        bottom: 0,
+        position: "absolute",
     },
-
-    slide3: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#92BBD9",
-    },
-    slide4: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#92AAD9",
-    },
-
     text: {
         color: "#fff",
         fontSize: 30,
         fontWeight: "bold",
     },
-
-    image: {
-        flex: 1,
-    },
-    lowerView : {
-        flex: 0.35,
-        backgroundColor: "#FFCD00",
-        alignItems: "center",
-        justifyContent: "center",
-
-    },
-    lowerText: {
-        color: "white",
-    },
     textView: {
         marginLeft: 40,
         marginRight: 40,
     },
-    submitView: {
-        position: "absolute",
-        bottom: 0,
+    wrapper: {
     },
-
 });
 
 export default NewGroup;

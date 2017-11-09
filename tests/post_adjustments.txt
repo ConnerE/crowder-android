@@ -1,0 +1,7 @@
+
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[48, 16]: require statement not part of an import statement
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[142, 69]: The key 'crowdName' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[8, 1]: Import sources within a group must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[9, 1]: Import sources within a group must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[15, 5]: The key 'NewGroup' is not sorted alphabetically
+

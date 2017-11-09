@@ -32,14 +32,13 @@ import { List, ListItem, SearchBar } from "react-native-elements";
 
 import _ from "lodash";
 
-interface Props {
+interface IProps {
     navigation: any;
 }
 
-interface State {
-}
+// interface IState { }
 
-interface Crowd {
+interface ICrowd {
     name: string;
     key: string;
     desc: string;
@@ -67,27 +66,28 @@ const dataSource = [
     {data: [], header: "Explore Crowds"},
 ];
 
-class Main extends React.Component<Props, State> {
-    constructor(props: any) {
-        super(props);
-        this.state = {};
-    }
-
+class Main extends React.Component<IProps> {
     public static navigationOptions = ({navigation}) => {
         return {
+            gesturesEnabled: false,
+            headerLeft: null,
             headerRight: <Icon name="add" color="#000000" size={35}
                                onPress={() => {
-                                   if (navigation.state.params.addNewGroup != undefined) {
+                                   if (navigation.state.params.addNewGroup !== undefined) {
                                        navigation.state.params.addNewGroup();
                                    }
                                }}/>,
-            title: "Crowds",
-            gesturesEnabled: false,
             headerStyle: {
                 marginTop: (Platform.OS === "ios") ? -20 : 0,
             },
-            headerLeft: null,
+            title: "Crowds",
+
         };
+    }
+
+    constructor(props: any) {
+        super(props);
+        this.state = {};
     }
 
     public componentDidMount() {
@@ -117,10 +117,10 @@ class Main extends React.Component<Props, State> {
     public getGroupInfo = () => {
         crowdsRef.limitToLast(20).on("child_added", (snapshot) => {
                 const returnObj = snapshot.val();
-                const newCrowd: Crowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
+                const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
                 dataSource[0].data.push(newCrowd);
                 this.forceUpdate();
-                console.log(returnObj);
+                // console.log(returnObj);
             },
         );
     }
@@ -139,7 +139,8 @@ class Main extends React.Component<Props, State> {
     }
 
     public navigateToCrowd = (crowdKey, crowdName) => {
-        this.props.navigation.navigate("CrowdChat", {key: crowdKey, crowdName, UUID: this.props.navigation.state.params.UUID});
+        this.props.navigation.navigate("CrowdChat", {key: crowdKey, crowdName,
+                                                     UUID: this.props.navigation.state.params.UUID});
     }
 
     public render() {
@@ -158,12 +159,11 @@ class Main extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: "#F3FCFF",
         flex: 1,
         justifyContent: "center",
-        backgroundColor: "#F3FCFF",
         padding: 20,
         paddingTop: 40,
-
     },
 
     group: {
