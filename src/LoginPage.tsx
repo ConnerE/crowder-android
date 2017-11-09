@@ -13,15 +13,15 @@ import * as React from "react";
 import {
     BackHandler,
     DeviceEventEmitter,
-    ImageBackground,
     Dimensions,
+    hableOpacity,
+    ImageBackground,
+    ImageBackground,
     Platform,
     StatusBar,
     StyleSheet,
-    Text,
-    TextInput,
-    Touc
-    ImageBackground,hableOpacity,
+    Text
+    TextInput, Touc,
     View,
 
 } from "react-native";
@@ -80,7 +80,7 @@ class Login extends React.Component<IProps, IState> {
                     <Swiper style={styles.wrapper} horizontal={true} autoplay>
                         <View style={styles.slide}>
                             <ImageBackground
-                                source={require('./img/group1.jpg')}
+                                source={require("./img/group1.jpg")}
                                 style={styles.image}
                                 >
                             <Text style={styles.text}>Welcome to Crowder</Text>
@@ -89,7 +89,7 @@ class Login extends React.Component<IProps, IState> {
 
                         <View style={styles.slide}>
                             <ImageBackground
-                                source={require('./img/group2.jpg')}
+                                source={require("./img/group2.jpg")}
                                 style={styles.image}
                             >
                                 <Text style={styles.text}>Explore around you</Text>
@@ -98,7 +98,7 @@ class Login extends React.Component<IProps, IState> {
 
                         <View style={styles.slide}>
                             <ImageBackground
-                                source={require('./img/group3.jpg')}
+                                source={require("./img/group3.jpg")}
                                 style={styles.image}
                             >
                                 <Text style={styles.text}>Find stuff you're into</Text>
@@ -107,7 +107,7 @@ class Login extends React.Component<IProps, IState> {
 
                         <View style={styles.slide}>
                             <ImageBackground
-                                source={require('./img/group4.jpg')}
+                                source={require("./img/group4.jpg")}
                                 style={styles.image}
                             >
                                 <Text style={styles.text}>Meet a chill crowd</Text>
