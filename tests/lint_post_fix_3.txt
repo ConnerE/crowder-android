@@ -1,0 +1,308 @@
+
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[1, 24]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[5, 5]: Named imports must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[12, 14]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[13, 8]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[15, 27]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[16, 28]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[18, 37]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[19, 20]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[21, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[22, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[26, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[30, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[38, 83]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[41, 5]: The class property 'chatRef' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[41, 5]: Declaration of public instance field not allowed after declaration of constructor. Instead, this should come after public static methods.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[43, 5]: The class method 'componentDidMount' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[47, 5]: Declaration of public static method not allowed after declaration of public instance method. Instead, this should come at the beginning of the class/interface.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[47, 12]: The class property 'navigationOptions' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[51, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[53, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[54, 5]: The class property 'getChat' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[55, 41]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[56, 21]: Identifier 'returnObj' is never reassigned; use 'const' instead of 'let'.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[58, 21]: Identifier 'newMessage' is never reassigned; use 'const' instead of 'let'.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[61, 21]: The key 'createdAt' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[62, 41]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[69, 14]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[70, 10]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[71, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[73, 5]: The class method 'onSend' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[76, 27]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[78, 13]: The key 'createdAt' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[79, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[83, 5]: The class method 'render' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/CrowdChat.tsx[99, 26]: file should end with a newline
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/LoginPage.tsx[16, 5]: Named imports must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/LoginPage.tsx[24, 21]: missing whitespace
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/LoginPage.tsx[83, 49]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/LoginPage.tsx[92, 49]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/LoginPage.tsx[101, 49]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/LoginPage.tsx[110, 49]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[12, 24]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[16, 5]: Named imports must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[25, 8]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[27, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[28, 1]: Import sources within a group must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[28, 10]: Named imports must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[28, 34]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[28, 57]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[29, 32]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[30, 27]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[33, 15]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[35, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[36, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[40, 11]: An empty interface is equivalent to `{}`.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[40, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[43, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[44, 17]: Properties should be separated by semicolons
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[45, 16]: Properties should be separated by semicolons
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[46, 17]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[49, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[51, 1]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[51, 5]: Identifier 'Fabric' is never reassigned; use 'const' instead of 'var'.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[51, 14]: require statement not part of an import statement
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[51, 22]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[53, 1]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[53, 7]: Identifier 'Crashlytics' is never reassigned; use 'const' instead of 'var'.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[55, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[57, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[59, 31]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[61, 3]: comment must start with a space
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[64, 32]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[65, 33]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[67, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[69, 1]: Forbidden 'var' keyword, use 'let' or 'const' instead
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[69, 5]: Identifier 'dataSource' is never reassigned; use 'const' instead of 'var'.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[70, 24]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[71, 24]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[71, 41]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[80, 5]: Declaration of public static method not allowed after declaration of constructor. Instead, this should come at the beginning of the class/interface.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[80, 12]: The class property 'navigationOptions' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[82, 49]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[84, 76]: != should be !==
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[85, 77]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[88, 20]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[89, 13]: The key 'gesturesEnabled' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[91, 45]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[93, 29]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[95, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[97, 5]: The class method 'componentDidMount' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[102, 5]: The class property 'checkIfExist' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[103, 70]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[105, 23]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[110, 23]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[111, 48]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[114, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[116, 5]: The class property 'addNewGroup' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[117, 40]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[118, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[121, 5]: The class property 'getGroupInfo' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[122, 38]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[123, 21]: Identifier 'returnObj' is never reassigned; use 'const' instead of 'let'.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[124, 21]: Identifier 'newCrowd' is never reassigned; use 'const' instead of 'let'.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[127, 17]: Calls to 'console.log' are not allowed.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[127, 39]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[128, 14]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[129, 10]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[130, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[132, 5]: The class property 'renderItem' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[138, 32]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[139, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[141, 5]: The class property 'renderHeader' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[142, 72]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[143, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[145, 5]: The class property 'navigateToCrowd' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[146, 1]: Exceeds maximum line length of 120
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[146, 40]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[146, 69]: Expected property shorthand in object literal ('{crowdName}').
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[147, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[149, 5]: The class method 'render' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[163, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[168, 9]: The key 'backgroundColor' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[176, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[182, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[191, 16]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[193, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[193, 27]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[199, 6]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/MainPage.tsx[203, 21]: file should end with a newline
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[1, 3]: comment must start with a space
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[6, 24]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[10, 5]: Named imports must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[17, 14]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[18, 8]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[20, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[21, 1]: Import sources within a group must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[21, 28]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[21, 51]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[22, 32]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[23, 27]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[24, 42]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[26, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[28, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[32, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[33, 20]: Properties should be separated by semicolons
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[34, 24]: Properties should be separated by semicolons
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[35, 23]: Properties should be separated by semicolons
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[43, 33]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[51, 5]: The class method 'componentDidMount' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[51, 25]: block is empty
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[55, 5]: The class property 'submit' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[63, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[65, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[67, 5]: The class method 'render' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[73, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[75, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[79, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[81, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[85, 33]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[88, 36]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[92, 46]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[94, 29]: The key 'borderBottomWidth' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[94, 47]: missing whitespace
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[94, 48]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[96, 25]: The key 'textInput' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[99, 29]: The key 'height' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[100, 36]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[101, 41]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[104, 36]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[104, 45]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[109, 30]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[110, 35]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[113, 25]: Calls to 'console.log' are not allowed.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[129, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[132, 16]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[141, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[142, 9]: The key 'backgroundColor' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[142, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[142, 39]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[147, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[148, 9]: The key 'alignItems' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[148, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[149, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[149, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[154, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[155, 9]: The key 'alignItems' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[155, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[156, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[156, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[161, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[162, 9]: The key 'alignItems' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[162, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[163, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[163, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[167, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[168, 9]: The key 'alignItems' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[168, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[169, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[169, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[173, 16]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[175, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[175, 27]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[179, 16]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[183, 9]: The key 'backgroundColor' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[183, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[184, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[185, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[188, 5]: The key 'lowerText' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[189, 16]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[189, 23]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[196, 19]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[197, 9]: The key 'bottom' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[197, 18]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[198, 6]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewGroup.tsx[202, 25]: file should end with a newline
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[12, 24]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[16, 5]: Named imports must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[23, 14]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[24, 8]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[26, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[27, 1]: Import sources within a group must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[27, 28]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[27, 51]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[28, 32]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[29, 27]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[31, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[32, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[36, 11]: interface name must start with a capitalized I
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[46, 32]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[54, 5]: The class method 'componentDidMount' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[54, 25]: block is empty
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[58, 5]: The class property 'submit' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[69, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[70, 6]: Unnecessary semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[72, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[74, 5]: The class method 'render' must be marked either 'private', 'public', or 'protected'
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[80, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[81, 36]: variable name must be in lowerCamelCase, PascalCase or UPPER_CASE
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[82, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[86, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[88, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[92, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[93, 36]: variable name must be in lowerCamelCase, PascalCase or UPPER_CASE
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[94, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[98, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[99, 36]: variable name must be in lowerCamelCase, PascalCase or UPPER_CASE
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[100, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[104, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[106, 43]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[118, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[121, 16]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[130, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[131, 9]: The key 'backgroundColor' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[131, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[131, 39]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[136, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[137, 9]: The key 'alignItems' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[137, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[138, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[138, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[143, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[144, 9]: The key 'alignItems' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[144, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[145, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[145, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[150, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[151, 9]: The key 'alignItems' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[151, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[152, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[152, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[156, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[157, 9]: The key 'alignItems' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[157, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[158, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[158, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[162, 16]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[164, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[164, 27]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[168, 16]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[172, 9]: The key 'backgroundColor' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[172, 26]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[173, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[174, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[177, 5]: The key 'lowerText' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[178, 16]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[178, 23]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[183, 6]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/NewUser.tsx[187, 24]: file should end with a newline
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[1, 24]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[2, 29]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[4, 31]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[5, 25]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[6, 18]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[7, 21]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[8, 1]: Import sources within a group must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[8, 22]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[9, 1]: Import sources within a group must be alphabetized.
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[9, 23]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[9, 36]: Missing semicolon
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[11, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[16, 5]: The key 'NewGroup' is not sorted alphabetically
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[17, 35]: Missing trailing comma
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[19, 23]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[22, 1]: Consecutive blank lines are forbidden
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[24, 31]: ' should be "
+ERROR: /Users/connererickson/AndroidStudioProjects/crowder/src/index.tsx[24, 60]: file should end with a newline
+
