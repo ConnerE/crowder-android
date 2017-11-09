@@ -46,9 +46,25 @@ interface Crowd {
     desc: string
 }
 
+
+// CRASHLYTICS STUFF
+var Fabric = require('react-native-fabric');
+
+var { Crashlytics } = Fabric;
+
+Crashlytics.setUserName('erickson');
+
+Crashlytics.setUserEmail('conner.erickson@tufts.edu');
+
+Crashlytics.setUserIdentifier('1234');
+
+//Crashlytics.setBool('has_posted', 'Tufts University');
+
 const rootRef = firebase.database().ref();
 const itemsRef = rootRef.child('users');
 const crowdsRef = rootRef.child('crowds');
+
+
 
 var dataSource = [
     {data: [], header: 'Your Crowds'},
@@ -114,6 +130,7 @@ class Main extends React.Component<Props, State> {
     };
 
     renderItem = (item) => {
+        // Crashlytics.crash(); // crash test
         return <TouchableOpacity onPress={() => this.navigateToCrowd(item.item.key, item.item.name)}>
             <View style={styles.group}>
                 <Text style={styles.text}> {item.item.name}</Text>
