@@ -36,7 +36,9 @@ interface IProps {
     navigation: any;
 }
 
-// interface IState { }
+interface IState {
+    name: string
+}
 
 interface ICrowd {
     name: string;
@@ -98,20 +100,26 @@ class Main extends React.Component<IProps> {
     public checkIfExist = () => {
         itemsRef.child(this.props.navigation.state.params.UUID).once("value", (snapshot) => {
             if (snapshot.val() !== null) {
+                console.log(snapshot.val());
                 alert("Welcome Back");
+                this.setState({name: snapshot.val().fullName});
                 this.getGroupInfo();
             } else {
                 this.getGroupInfo();
                 // TODO: Add logic for welcoming new user
-                alert("Welcome New User!!");
-                this.props.navigation.navigate("NewUser", {UUID: this.props.navigation.state.params.UUID});
+                // alert("Welcome New User!!");
+                this.props.navigation.navigate("NewUser", {UUID: this.props.navigation.state.params.UUID, returnData: this.returnName.bind(this)});
             }
         });
     }
 
+    public returnName = (name) => {
+        this.setState({name: name});
+    };
+
     public addNewGroup = () => {
         this.props.navigation.navigate("NewGroup");
-    }
+    };
 
     // TODO: Add flatlist to display all the available groups
     public getGroupInfo = () => {
@@ -132,16 +140,16 @@ class Main extends React.Component<IProps> {
                 <Text style={styles.text}> {item.item.name}</Text>
             </View>
             </TouchableOpacity>;
-    }
+    };
 
     public renderHeader = (item) => {
         return <Text style={styles.header}>{item.section.header}</Text>;
-    }
+    };
 
     public navigateToCrowd = (crowdKey, crowdName) => {
         this.props.navigation.navigate("CrowdChat", {key: crowdKey, crowdName,
-                                                     UUID: this.props.navigation.state.params.UUID});
-    }
+                                                     UUID: this.props.navigation.state.params.UUID, fullName: this.state.name});
+    };
 
     public render() {
         return (

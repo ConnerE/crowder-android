@@ -51,13 +51,12 @@ class NewGroup extends React.Component<IProps, IState> {
     // }
 
     public submit = () => {
-        // crowdsRef.push({
-        //     name: this.state.name,
-        //     desc: this.state.desc
-        // });
-        //
-        // this.props.navigation.goBack(null);
+        crowdsRef.push({
+            name: this.state.name,
+            desc: this.state.desc
+        });
 
+        this.props.navigation.goBack(null);
     }
 
     public render() {

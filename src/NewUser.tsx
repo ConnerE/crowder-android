@@ -33,10 +33,10 @@ interface IProps {
 }
 
 interface IState {
-    about_me: string;
+    aboutMe: string;
     email: string;
-    full_name: string;
-    job_title: string;
+    fullName: string;
+    jobTitle: string;
     photo_url: string;
     school: string;
 }
@@ -50,22 +50,20 @@ class NewUser extends React.Component<IProps, IState> {
 
     }
 
-    // public componentDidMount() {
-
-    // }
-
     public submit = () => {
         itemsRef.update({
             [this.props.navigation.state.params.UUID]: {
-                aboutMe: this.state.about_me,
+                aboutMe: this.state.aboutMe,
                 email: this.state.email,
-                fullName: this.state.full_name,
-                jobTitle: this.state.job_title,
+                fullName: this.state.fullName,
+                jobTitle: this.state.jobTitle,
                 school: this.state.school,
             },
         });
 
-    }
+        this.props.navigation.state.params.returnData(this.state.fullName);
+        this.props.navigation.goBack(null);
+    };
 
     public render() {
         return (
@@ -92,7 +90,7 @@ class NewUser extends React.Component<IProps, IState> {
                 <TextInput
                     placeholder={"Job Title"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(JobTitle) => this.setState({JobTitle})}
+                    onChangeText={(jobTitle) => this.setState({jobTitle})}
                     underlineColorAndroid="rgba(0,0,0,0)"
                 />
                 <TextInput

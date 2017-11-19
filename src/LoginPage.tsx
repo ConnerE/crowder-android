@@ -77,44 +77,44 @@ class Login extends React.Component<IProps, IState> {
             <View style={styles.container}>
                 <StatusBar hidden={true}/>
                 <View style={{flex: 0.65}}>
-                    <Swiper style={styles.wrapper} horizontal={true} autoplay>
-                        <View style={styles.slide}>
-                            <ImageBackground
-                                source={require("./img/group1.jpg")}
-                                style={styles.image}
-                                >
-                            <Text style={styles.text}>Welcome to Crowder</Text>
-                            </ImageBackground>
-                        </View>
+                    {/*<Swiper style={styles.wrapper} horizontal={true} autoplay>*/}
+                        {/*<View style={styles.slide}>*/}
+                            {/*<ImageBackground*/}
+                                {/*source={require("./img/group1.jpg")}*/}
+                                {/*style={styles.image}*/}
+                                {/*>*/}
+                            {/*<Text style={styles.text}>Welcome to Crowder</Text>*/}
+                            {/*</ImageBackground>*/}
+                        {/*</View>*/}
 
-                        <View style={styles.slide}>
-                            <ImageBackground
-                                source={require("./img/group2.jpg")}
-                                style={styles.image}
-                            >
-                                <Text style={styles.text}>Explore around you</Text>
-                            </ImageBackground>
-                        </View>
+                        {/*<View style={styles.slide}>*/}
+                            {/*<ImageBackground*/}
+                                {/*source={require("./img/group2.jpg")}*/}
+                                {/*style={styles.image}*/}
+                            {/*>*/}
+                                {/*<Text style={styles.text}>Explore around you</Text>*/}
+                            {/*</ImageBackground>*/}
+                        {/*</View>*/}
 
-                        <View style={styles.slide}>
-                            <ImageBackground
-                                source={require("./img/group3.jpg")}
-                                style={styles.image}
-                            >
-                                <Text style={styles.text}>Find stuff you're into</Text>
-                            </ImageBackground>
-                        </View>
+                        {/*<View style={styles.slide}>*/}
+                            {/*<ImageBackground*/}
+                                {/*source={require("./img/group3.jpg")}*/}
+                                {/*style={styles.image}*/}
+                            {/*>*/}
+                                {/*<Text style={styles.text}>Find stuff you're into</Text>*/}
+                            {/*</ImageBackground>*/}
+                        {/*</View>*/}
 
-                        <View style={styles.slide}>
-                            <ImageBackground
-                                source={require("./img/group4.jpg")}
-                                style={styles.image}
-                            >
-                                <Text style={styles.text}>Meet a chill crowd</Text>
-                            </ImageBackground>
-                        </View>
+                        {/*<View style={styles.slide}>*/}
+                            {/*<ImageBackground*/}
+                                {/*source={require("./img/group4.jpg")}*/}
+                                {/*style={styles.image}*/}
+                            {/*>*/}
+                                {/*<Text style={styles.text}>Meet a chill crowd</Text>*/}
+                            {/*</ImageBackground>*/}
+                        {/*</View>*/}
 
-                    </Swiper>
+                    {/*</Swiper>*/}
                 </View>
                 <View style={styles.lowerView}>
                     <TextInput

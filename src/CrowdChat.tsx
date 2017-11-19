@@ -75,6 +75,10 @@ class CrowdChat extends React.Component<IProps, IState> {
         });
     }
 
+    private avatarClicked = (user) => {
+        this.props.navigation.navigate("UserInfo", {_id: user._id});
+    };
+
     private render() {
         return (
             <View style={{flex: 1}}>
@@ -84,7 +88,12 @@ class CrowdChat extends React.Component<IProps, IState> {
                     onSend={(messages) => this.onSend(messages)}
                     user={{
                         _id: this.props.navigation.state.params.UUID,
+                        name: this.props.navigation.state.params.fullName,
                     }}
+                    isAnimated={true}
+                    showUserAvatar={true}
+                    renderAvatarOnTop={true}
+                    onPressAvatar={(user) => this.avatarClicked(user)}
                 />
             </View>
         );
