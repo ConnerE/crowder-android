@@ -33,7 +33,7 @@ interface IState {
     creator_id: string;
     desc: string;
     lat: number;
-    lon: number;
+    lng: number;
     name: string;
 }
 
@@ -46,18 +46,17 @@ class NewGroup extends React.Component<IProps, IState> {
 
     }
 
-    // public componentDidMount() {
-
-    // }
-
     public submit = () => {
         crowdsRef.push({
             name: this.state.name,
-            desc: this.state.desc
+            desc: this.state.desc,
+            lat: this.state.lat,
+            lng: this.state.lng,
+            members: this.props.navigation.state.params._id
         });
 
         this.props.navigation.goBack(null);
-    }
+    };
 
     public render() {
         return (
@@ -105,7 +104,10 @@ class NewGroup extends React.Component<IProps, IState> {
                         language: "en", // language of the results
                     }}
                     onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-                        // console.log(details.geometry.location);
+                        this.setState({
+                            lat: details.geometry.location.lat,
+                            lng: details.geometry.location.lng,
+                        });
                     }}
                     currentLocation={true}
                 />

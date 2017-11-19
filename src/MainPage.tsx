@@ -22,6 +22,7 @@ import {
     Text,
     TouchableOpacity,
     View,
+    Geolocation
 } from "react-native";
 
 import { Icon, SocialIcon } from "react-native-elements";
@@ -32,12 +33,32 @@ import { List, ListItem, SearchBar } from "react-native-elements";
 
 import _ from "lodash";
 
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+    let R = 6371; // Radius of the earth in km
+    let dLat = deg2rad(lat2-lat1);  // deg2rad below
+    let dLon = deg2rad(lon2-lon1);
+    let a =
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon/2) * Math.sin(dLon/2)
+    ;
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    let d = R * c; // Distance in km
+    return d;
+}
+
+function deg2rad(deg) {
+    return deg * (Math.PI/180)
+}
+
 interface IProps {
     navigation: any;
 }
 
 interface IState {
-    name: string
+    name: string,
+    lat: number,
+    lng: number,
 }
 
 interface ICrowd {
@@ -85,11 +106,20 @@ class Main extends React.Component<IProps> {
             title: "Crowds",
 
         };
-    }
+    };
 
     constructor(props: any) {
         super(props);
         this.state = {};
+        navigator.geolocation.getCurrentPosition((position) => {
+            this.setState({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            });
+            this.getGroupInfo();
+
+        }, (error) => console.log(new Date(), error));
+
     }
 
     public componentDidMount() {
@@ -103,9 +133,7 @@ class Main extends React.Component<IProps> {
                 console.log(snapshot.val());
                 alert("Welcome Back");
                 this.setState({name: snapshot.val().fullName});
-                this.getGroupInfo();
             } else {
-                this.getGroupInfo();
                 // TODO: Add logic for welcoming new user
                 // alert("Welcome New User!!");
                 this.props.navigation.navigate("NewUser", {UUID: this.props.navigation.state.params.UUID, returnData: this.returnName.bind(this)});
@@ -118,16 +146,20 @@ class Main extends React.Component<IProps> {
     };
 
     public addNewGroup = () => {
-        this.props.navigation.navigate("NewGroup");
+        this.props.navigation.navigate("NewGroup", {_id: this.props.navigation.state.params.UUID});
     };
 
     // TODO: Add flatlist to display all the available groups
     public getGroupInfo = () => {
         crowdsRef.limitToLast(20).on("child_added", (snapshot) => {
                 const returnObj = snapshot.val();
-                const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
-                dataSource[0].data.push(newCrowd);
-                this.forceUpdate();
+                console.log(returnObj);
+                let distance = getDistanceFromLatLonInKm(returnObj.lat, returnObj.lng, this.state.lat, this.state.lng);
+                if (distance <= 1) {
+                    const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
+                    dataSource[1].data.push(newCrowd);
+                    this.forceUpdate();
+                }
                 // console.log(returnObj);
             },
         );

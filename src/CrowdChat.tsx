@@ -26,6 +26,7 @@ interface IState {
     messages: any[];
 }
 
+
 class CrowdChat extends React.Component<IProps, IState> {
 
     public static navigationOptions = ({navigation}) => {
