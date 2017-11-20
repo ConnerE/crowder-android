@@ -163,11 +163,29 @@ class Main extends React.Component<IProps> {
                 // console.log(returnObj);
             },
         );
-    }
+    };
 
     public renderItem = (item) => {
         // Crashlytics.crash(); // crash test
-        return <TouchableOpacity onPress={() => this.navigateToCrowd(item.item.key, item.item.name)}>
+        return <TouchableOpacity onPress={() => {
+            for (let i = 0; i < dataSource[1].data.length; i++) {
+                if (dataSource[1].data[i].key == item.item.key) {
+                    dataSource[0].data.push(dataSource[1].data[i]);
+                    dataSource[1].data.splice(i, 1);
+                    this.forceUpdate();
+
+                    let crowdRef = crowdsRef.child(item.item.key);
+                    alert(this.props.navigation.state.params.UUID);
+                    crowdRef.push({
+                        members: this.props.navigation.state.params.UUID
+                    });
+                }
+
+
+            }
+            this.navigateToCrowd(item.item.key, item.item.name)
+        }
+        }>
             <View style={styles.group}>
                 <Text style={styles.text}> {item.item.name}</Text>
             </View>
