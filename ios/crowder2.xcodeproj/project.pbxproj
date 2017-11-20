@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -50,6 +49,15 @@
 		E5173E79C37D4FC388A61C3B /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22D75D7C9259433AA6294DA9 /* Feather.ttf */; };
 		E8DAC8EC12DF48FFBE17C7CB /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05CFDC5E7EC245BF8E015C81 /* Ionicons.ttf */; };
 		EED21BBDF78D4387ADA754BF /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B2171D1E94A48B39F16AFE1 /* MaterialIcons.ttf */; };
+		8AB6DF03EE194DAD92FAB0C1 /* Architex.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31D7E16A25C74438BF3F1DD9 /* Architex.ttf */; };
+		F09E802CF8354F4BAD508D34 /* SFCartoonistHand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F5F92B52217484E97C10CA1 /* SFCartoonistHand-Bold.ttf */; };
+		8CFEA1075D9F4EA98262A05F /* SFCartoonistHand-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76241D8E116647B68DD9C0E0 /* SFCartoonistHand-BoldItalic.ttf */; };
+		560403B27F674A7492C97E78 /* SFCartoonistHand-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C110207F76FF46F6BC022DA2 /* SFCartoonistHand-Italic.ttf */; };
+		CDD6BA6A50474B349D7219AA /* SFCartoonistHand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FF0F3C26235488CB5FDFD06 /* SFCartoonistHand.ttf */; };
+		BC769B763802437F8F5F3919 /* SFCartoonistHandSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDFFB3318C884C6E9A26367A /* SFCartoonistHandSC-Bold.ttf */; };
+		F8D25F177B7345E498A98CA8 /* SFCartoonistHandSC-BoldItal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A84203BABFBD4178B7E3248E /* SFCartoonistHandSC-BoldItal.ttf */; };
+		C1A7BCC323F64A86946D2E1B /* SFCartoonistHandSC-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDC97774500E458BBFF283E6 /* SFCartoonistHandSC-Italic.ttf */; };
+		7D7832C41B3F49189DBD84DC /* SFCartoonistHandSC.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3C87B85C76844C1BD1FD05D /* SFCartoonistHandSC.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -362,6 +370,15 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		D72DA3F4240F4CD3BC387F02 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		D808165C842444FE94311407 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		31D7E16A25C74438BF3F1DD9 /* Architex.ttf */ = {isa = PBXFileReference; name = "Architex.ttf"; path = "../assets/fonts/Architex.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3F5F92B52217484E97C10CA1 /* SFCartoonistHand-Bold.ttf */ = {isa = PBXFileReference; name = "SFCartoonistHand-Bold.ttf"; path = "../assets/fonts/SFCartoonistHand-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		76241D8E116647B68DD9C0E0 /* SFCartoonistHand-BoldItalic.ttf */ = {isa = PBXFileReference; name = "SFCartoonistHand-BoldItalic.ttf"; path = "../assets/fonts/SFCartoonistHand-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C110207F76FF46F6BC022DA2 /* SFCartoonistHand-Italic.ttf */ = {isa = PBXFileReference; name = "SFCartoonistHand-Italic.ttf"; path = "../assets/fonts/SFCartoonistHand-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1FF0F3C26235488CB5FDFD06 /* SFCartoonistHand.ttf */ = {isa = PBXFileReference; name = "SFCartoonistHand.ttf"; path = "../assets/fonts/SFCartoonistHand.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DDFFB3318C884C6E9A26367A /* SFCartoonistHandSC-Bold.ttf */ = {isa = PBXFileReference; name = "SFCartoonistHandSC-Bold.ttf"; path = "../assets/fonts/SFCartoonistHandSC-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A84203BABFBD4178B7E3248E /* SFCartoonistHandSC-BoldItal.ttf */ = {isa = PBXFileReference; name = "SFCartoonistHandSC-BoldItal.ttf"; path = "../assets/fonts/SFCartoonistHandSC-BoldItal.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EDC97774500E458BBFF283E6 /* SFCartoonistHandSC-Italic.ttf */ = {isa = PBXFileReference; name = "SFCartoonistHandSC-Italic.ttf"; path = "../assets/fonts/SFCartoonistHandSC-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F3C87B85C76844C1BD1FD05D /* SFCartoonistHandSC.ttf */ = {isa = PBXFileReference; name = "SFCartoonistHandSC.ttf"; path = "../assets/fonts/SFCartoonistHandSC.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,6 +581,15 @@
 				D808165C842444FE94311407 /* Octicons.ttf */,
 				6909BD393BBA46D882CDEE39 /* SimpleLineIcons.ttf */,
 				6E23C60850C44A45AB49E187 /* Zocial.ttf */,
+				31D7E16A25C74438BF3F1DD9 /* Architex.ttf */,
+				3F5F92B52217484E97C10CA1 /* SFCartoonistHand-Bold.ttf */,
+				76241D8E116647B68DD9C0E0 /* SFCartoonistHand-BoldItalic.ttf */,
+				C110207F76FF46F6BC022DA2 /* SFCartoonistHand-Italic.ttf */,
+				1FF0F3C26235488CB5FDFD06 /* SFCartoonistHand.ttf */,
+				DDFFB3318C884C6E9A26367A /* SFCartoonistHandSC-Bold.ttf */,
+				A84203BABFBD4178B7E3248E /* SFCartoonistHandSC-BoldItal.ttf */,
+				EDC97774500E458BBFF283E6 /* SFCartoonistHandSC-Italic.ttf */,
+				F3C87B85C76844C1BD1FD05D /* SFCartoonistHandSC.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1122,6 +1148,15 @@
 				0601F7515CB0431B8402399A /* Octicons.ttf in Resources */,
 				8EEDC24BDED446F8B3A53834 /* SimpleLineIcons.ttf in Resources */,
 				175B4F5A0D714271B90EF6C7 /* Zocial.ttf in Resources */,
+				8AB6DF03EE194DAD92FAB0C1 /* Architex.ttf in Resources */,
+				F09E802CF8354F4BAD508D34 /* SFCartoonistHand-Bold.ttf in Resources */,
+				8CFEA1075D9F4EA98262A05F /* SFCartoonistHand-BoldItalic.ttf in Resources */,
+				560403B27F674A7492C97E78 /* SFCartoonistHand-Italic.ttf in Resources */,
+				CDD6BA6A50474B349D7219AA /* SFCartoonistHand.ttf in Resources */,
+				BC769B763802437F8F5F3919 /* SFCartoonistHandSC-Bold.ttf in Resources */,
+				F8D25F177B7345E498A98CA8 /* SFCartoonistHandSC-BoldItal.ttf in Resources */,
+				C1A7BCC323F64A86946D2E1B /* SFCartoonistHandSC-Italic.ttf in Resources */,
+				7D7832C41B3F49189DBD84DC /* SFCartoonistHandSC.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

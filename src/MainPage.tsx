@@ -44,6 +44,7 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
     ;
     let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     let d = R * c; // Distance in km
+    // console.log("Just calculated a distance.");
     return d;
 }
 
@@ -150,16 +151,17 @@ class Main extends React.Component<IProps> {
     };
 
     // TODO: Add flatlist to display all the available groups
+    // TODO: Add distance back
     public getGroupInfo = () => {
         crowdsRef.limitToLast(20).on("child_added", (snapshot) => {
                 const returnObj = snapshot.val();
                 console.log(returnObj);
                 let distance = getDistanceFromLatLonInKm(returnObj.lat, returnObj.lng, this.state.lat, this.state.lng);
-                if (distance <= 1) {
+                // if (distance <= 10) {
                     const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
                     dataSource[1].data.push(newCrowd);
                     this.forceUpdate();
-                }
+                // }
                 // console.log(returnObj);
             },
         );
