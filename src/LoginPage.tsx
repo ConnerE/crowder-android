@@ -69,6 +69,7 @@ class Login extends React.Component<IProps, IState> {
     }
 
     public loginPressed = () => {
+        alert('ss');
         this.props.navigation.navigate("Main", {UUID: this.state.tempUUID});
     };
 

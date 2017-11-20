@@ -60,7 +60,7 @@ class CrowdChat extends React.Component<IProps, IState> {
 
             },
         );
-    }
+    };
 
     private componentDidMount() {
         this.getChat();

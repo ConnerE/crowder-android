@@ -1,14 +1,3 @@
-/* This is the login page for choosing the probes
- * Algo: The system will check whether the user has a preferred probe, if yes, scan the devices around, and if that
- * probe exists, connect to the probe automatically. After 10 seconds, the user will be about to choose other available
- * probes around, and the preferred probed will be changed automatically
- *
- * TODO: Catch all the errors / Get rid of all the weird warnings
- * TODO: Add color to the buttons next to the English description
- * by: Philip Wang
- * on: June 15th, 2017
- */
-
 import * as React from "react";
 import {
     BackHandler,
@@ -30,6 +19,7 @@ import * as Swiper from "react-native-swiper";
 const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
 import { List, ListItem, SearchBar } from "react-native-elements";
+import Swipeout from 'react-native-swipeout';
 
 import _ from "lodash";
 
@@ -85,7 +75,7 @@ const rootRef = firebase.database().ref();
 const itemsRef = rootRef.child("users");
 const crowdsRef = rootRef.child("crowds");
 
-const dataSource = [
+var dataSource = [
     {data: [], header: "Your Crowds"},
     {data: [], header: "Explore Crowds"},
 ];
@@ -140,7 +130,7 @@ class Main extends React.Component<IProps> {
                 this.props.navigation.navigate("NewUser", {UUID: this.props.navigation.state.params.UUID, returnData: this.returnName.bind(this)});
             }
         });
-    }
+    };
 
     public returnName = (name) => {
         this.setState({name: name});
@@ -153,45 +143,81 @@ class Main extends React.Component<IProps> {
     // TODO: Add flatlist to display all the available groups
     // TODO: Add distance back
     public getGroupInfo = () => {
-        crowdsRef.limitToLast(20).on("child_added", (snapshot) => {
+        crowdsRef.on("child_added", (snapshot) => {
                 const returnObj = snapshot.val();
-                console.log(returnObj);
+                let members = returnObj.members;
+                for (let key in members) {
+                    let id = members[key].userID;
+                    if (id == this.props.navigation.state.params.UUID) {
+                        const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
+                        dataSource[0].data.push(newCrowd);
+                        this.forceUpdate();
+                        return;
+                    }
+                }
+
                 let distance = getDistanceFromLatLonInKm(returnObj.lat, returnObj.lng, this.state.lat, this.state.lng);
-                // if (distance <= 10) {
+                if (distance <= 1) {
                     const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
                     dataSource[1].data.push(newCrowd);
                     this.forceUpdate();
-                // }
+                }
                 // console.log(returnObj);
             },
         );
     };
 
+    public deleteGroup = (item) => {
+        // TODO: 1. Move from datalist 0 to datalist 1
+        // TODO: 2. Delete it from datalist 0
+        // TODO: 3. Remove this user from the memebers group in firebase
+        alert(item.item.key);
+    };
+
+
     public renderItem = (item) => {
-        // Crashlytics.crash(); // crash test
-        return <TouchableOpacity onPress={() => {
-            for (let i = 0; i < dataSource[1].data.length; i++) {
-                if (dataSource[1].data[i].key == item.item.key) {
-                    dataSource[0].data.push(dataSource[1].data[i]);
-                    dataSource[1].data.splice(i, 1);
-                    this.forceUpdate();
+        let swipeBtns = [{
+            text: 'Delete',
+            backgroundColor: 'red',
+            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+            onPress: () => { this.deleteGroup(item) }
+        }];
 
-                    let crowdRef = crowdsRef.child(item.item.key);
-                    alert(this.props.navigation.state.params.UUID);
-                    crowdRef.push({
-                        members: this.props.navigation.state.params.UUID
-                    });
-                }
-
-
+        if (item.section.header !== "Explore Crowds") {
+            return <Swipeout right={swipeBtns}><TouchableOpacity onPress={() => {
+                this.navigateToCrowd(item.item.key, item.item.name)
             }
-            this.navigateToCrowd(item.item.key, item.item.name)
+            }>
+                <View style={styles.group}>
+                    <Text style={styles.text}> {item.item.name}</Text>
+                </View>
+            </TouchableOpacity></Swipeout>;
+        } else {
+            return <Swipeout right={swipeBtns}><TouchableOpacity onPress={() => {
+                if (item.section.header === "Explore Crowds") {
+                    for (let i = 0; i < dataSource[1].data.length; i++) {
+                        if (dataSource[1].data[i].key == item.item.key) {
+                            dataSource[0].data.push(dataSource[1].data[i]);
+                            dataSource[1].data.splice(i, 1);
+                            this.forceUpdate();
+
+                            let crowdRef = crowdsRef.child(item.item.key).child('members');
+                            crowdRef.push({
+                                userID: this.props.navigation.state.params.UUID
+                            });
+                        }
+                    }
+                }
+                this.navigateToCrowd(item.item.key, item.item.name)
+            }
+            }>
+                <View style={styles.group}>
+                    <Text style={styles.text}> {item.item.name}</Text>
+                </View>
+            </TouchableOpacity></Swipeout>;
         }
-        }>
-            <View style={styles.group}>
-                <Text style={styles.text}> {item.item.name}</Text>
-            </View>
-            </TouchableOpacity>;
+
+
     };
 
     public renderHeader = (item) => {

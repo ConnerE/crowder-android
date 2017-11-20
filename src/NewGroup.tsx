@@ -52,7 +52,7 @@ class NewGroup extends React.Component<IProps, IState> {
             desc: this.state.desc,
             lat: this.state.lat,
             lng: this.state.lng,
-            members: this.props.navigation.state.params._id
+            members: {admin: {userID: this.props.navigation.state.params._id}}
         });
 
         this.props.navigation.goBack(null);
