@@ -21,6 +21,7 @@ import { SocialIcon } from "react-native-elements";
 import * as Swiper from "react-native-swiper";
 const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 interface IProps {
@@ -79,13 +80,42 @@ class UserInfo extends React.Component<IProps, IState> {
             <View style={{flex: 1}}>
                 <StatusBar hidden={true}/>
                 {!this.state.ready && (<Text>Loading....</Text>)}
-                {this.state.ready && (                <View>
-                    <Text>{this.state.fullName}</Text>
-                    <Text>{this.state.aboutMe}</Text>
-                    <Text>{this.state.email}</Text>
-                    <Text>{this.state.school}</Text>
-                    <Text>{this.state.jobTitle}</Text>
-                </View>)}
+                {this.state.ready && (
+                    <View>
+                        <Text style={styles.titleText}>Hi, I'm {this.state.fullName}</Text>
+                        <Text style={styles.aboutText}>{this.state.aboutMe}</Text>
+
+
+                        <View style={styles.iconText}>
+                            <View>
+                                <Icon name="graduation-cap" size={20} color="#1d24ff" />
+                            </View>
+                            <View>
+                                <Text style={styles.text}>  {this.state.school}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.iconText}>
+                            <View>
+                                <Icon name="briefcase" size={20} color="#1d24ff" />
+                            </View>
+                            <View>
+                                <Text style={styles.text}>    {this.state.jobTitle}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.iconText}>
+                            <View>
+                                <Icon name="mail-alt" size={20} color="#1d24ff" />
+                            </View>
+                            <View>
+                                <Text style={styles.text}>    {this.state.email}</Text>
+                            </View>
+                        </View>
+
+
+
+                    </View>)}
 
 
             </View>
@@ -94,8 +124,26 @@ class UserInfo extends React.Component<IProps, IState> {
 }
 
 const styles = StyleSheet.create({
+    aboutText: {
+        color: "#000000",
+        fontSize: 15,
+        fontWeight: "bold",
+        textAlign: "center",
+    },
+
     container: {
         flex: 1,
+    },
+
+    iconText: {
+        flex: 1,
+        flexDirection: "row",
+        // justifyContent: "space-between",
+        // width: 50,
+        // height: 50,
+        paddingTop: 15,
+        paddingBottom: 15,
+        paddingLeft: 15,
     },
     image: {
         flex: 1,
@@ -109,10 +157,16 @@ const styles = StyleSheet.create({
         bottom: 0,
         position: "absolute",
     },
+    titleText: {
+        color: "#000000",
+        fontSize: 50,
+        fontFamily: "SFCartoonistHand-Bold",
+        textAlign: "center",
+    },
     text: {
-        color: "#fff",
-        fontSize: 30,
-        fontWeight: "bold",
+        color: "#00096a",
+        fontSize: 12,
+
     },
     textView: {
         marginLeft: 40,

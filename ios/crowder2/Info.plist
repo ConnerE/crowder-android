@@ -64,6 +64,15 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>Architex.ttf</string>
+		<string>SFCartoonistHand-Bold.ttf</string>
+		<string>SFCartoonistHand-BoldItalic.ttf</string>
+		<string>SFCartoonistHand-Italic.ttf</string>
+		<string>SFCartoonistHand.ttf</string>
+		<string>SFCartoonistHandSC-Bold.ttf</string>
+		<string>SFCartoonistHandSC-BoldItal.ttf</string>
+		<string>SFCartoonistHandSC-Italic.ttf</string>
+		<string>SFCartoonistHandSC.ttf</string>
 	</array>
 </dict>
 </plist>
