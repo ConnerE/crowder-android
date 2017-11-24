@@ -168,10 +168,23 @@ class Main extends React.Component<IProps> {
     };
 
     public deleteGroup = (item) => {
-        // TODO: 1. Move from datalist 0 to datalist 1
-        // TODO: 2. Delete it from datalist 0
-        // TODO: 3. Remove this user from the memebers group in firebase
-        alert(item.item.key);
+        crowdsRef.off();
+        crowdsRef.child(item.item.key).child("members").once('value', (snapshot) => {
+            let members = snapshot.val();
+            for (let key in members) {
+                let id = members[key].userID;
+                if (id == this.props.navigation.state.params.UUID) {
+                    crowdsRef.child(item.item.key).child("members").child(key).remove(() => {
+                        dataSource = [
+                            {data: [], header: "Your Crowds"},
+                            {data: [], header: "Explore Crowds"},
+                        ];
+                        this.getGroupInfo();
+                    });
+                    break;
+                }
+            }
+        });
     };
 
 
@@ -193,7 +206,7 @@ class Main extends React.Component<IProps> {
                 </View>
             </TouchableOpacity></Swipeout>;
         } else {
-            return <Swipeout right={swipeBtns}><TouchableOpacity onPress={() => {
+            return <TouchableOpacity onPress={() => {
                 if (item.section.header === "Explore Crowds") {
                     for (let i = 0; i < dataSource[1].data.length; i++) {
                         if (dataSource[1].data[i].key == item.item.key) {
@@ -214,7 +227,7 @@ class Main extends React.Component<IProps> {
                 <View style={styles.group}>
                     <Text style={styles.text}> {item.item.name}</Text>
                 </View>
-            </TouchableOpacity></Swipeout>;
+            </TouchableOpacity>;
         }
 
 

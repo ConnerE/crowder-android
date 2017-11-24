@@ -23,6 +23,7 @@ import {
     Text
     TextInput, Touc,
     View,
+    TouchableOpacity
 
 } from "react-native";
 
@@ -47,7 +48,7 @@ const firebaseConfig = {
     databaseURL: "https://crowderweb.firebaseio.com",
     messagingSenderId: "744758366305",
     projectId: "crowderweb",
-    storageBucket: "",
+    storageBucket: "gs://crowderweb.appspot.com",
 };
 firebase.initializeApp(firebaseConfig);
 
@@ -69,7 +70,7 @@ class Login extends React.Component<IProps, IState> {
     }
 
     public loginPressed = () => {
-        alert('ss');
+        // this.props.navigation.navigate("PicturePicking")
         this.props.navigation.navigate("Main", {UUID: this.state.tempUUID});
     };
 
@@ -124,6 +125,11 @@ class Login extends React.Component<IProps, IState> {
                         onChangeText={(tempUUID) => this.setState({tempUUID})}
                         underlineColorAndroid="rgba(0,0,0,0)"
                     />
+                    {/*<TouchableOpacity onPress={this.loginPressed}>*/}
+                        {/*<Text>*/}
+                        {/*PH*/}
+                        {/*</Text>*/}
+                    {/*</TouchableOpacity>*/}
                     <SocialIcon
                         title="Sign In With Facebook"
                         button

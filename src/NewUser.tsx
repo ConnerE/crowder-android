@@ -25,6 +25,7 @@ import {
 
 import { SocialIcon } from "react-native-elements";
 import * as Swiper from "react-native-swiper";
+import CameraRollPicker from 'react-native-camera-roll-picker';
 const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
 
@@ -65,10 +66,19 @@ class NewUser extends React.Component<IProps, IState> {
         this.props.navigation.goBack(null);
     };
 
+    public updatePicture = () => {
+        this.props.navigation.navigate("PicturePicking");
+    };
+
     public render() {
         return (
             <View style={{flex: 1}}>
                 <StatusBar hidden={true}/>
+                <TouchableOpacity onPress={this.updatePicture}>
+                    <Text>
+                        Update Picture
+                    </Text>
+                </TouchableOpacity>
                 <TextInput
                     placeholder={"About Me"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}

@@ -8,6 +8,7 @@ import NewUser from "./NewUser";
 import NewGroup from "./NewGroup";
 import CrowdChat from "./CrowdChat";
 import UserInfo from './UserInfo'
+import PicturePicking from './PicturePicking'
 
 const Navigator = StackNavigator({
     Home: {screen: LoginScreen},
@@ -15,7 +16,8 @@ const Navigator = StackNavigator({
     NewUser: {screen: NewUser},
     NewGroup: {screen: NewGroup},
     CrowdChat: {screen: CrowdChat},
-    UserInfo: {screen: UserInfo}
+    UserInfo: {screen: UserInfo},
+    PicturePicking: {screen: PicturePicking}
 }, {
     initialRouteName: "Home",
 });
