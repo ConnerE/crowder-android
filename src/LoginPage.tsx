@@ -18,7 +18,7 @@ import { SocialIcon } from "react-native-elements";
 import * as Swiper from "react-native-swiper";
 const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
-// import { AccessToken, LoginManager } from 'react-native-fbsdk';
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
 
 interface IProps {
     navigation: any;
@@ -57,8 +57,34 @@ class Login extends React.Component<IProps, IState> {
     }
 
     public loginPressed = () => {
+        LoginManager
+            .logInWithReadPermissions(['public_profile', 'email'])
+            .then((result) => {
+                if (result.isCancelled) {
+                    return Promise.reject(new Error('The user cancelled the request'));
+                }
+
+                console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+                // get the access token
+                return AccessToken.getCurrentAccessToken();
+            })
+            .then(data => {
+                // create a new firebase credential with the token
+                const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+
+                // login with credential
+                console.log(firebase);
+                console.log(credential);
+                return firebase.auth().signInWithCredential(credential);
+            })
+            .then((currentUser) => {
+                this.props.navigation.navigate("Main", {UUID: currentUser.uid});
+            })
+            .catch((error) => {
+                console.log(`Login fail with error: ${error}`);
+            });
         // this.props.navigation.navigate("PicturePicking")
-        this.props.navigation.navigate("Main", {UUID: this.state.tempUUID});
+        // this.props.navigation.navigate("Main", {UUID: 'q'});
     };
 
     public render() {
@@ -106,24 +132,24 @@ class Login extends React.Component<IProps, IState> {
                     {/*</Swiper>*/}
                 </View>
                 <View style={styles.lowerView}>
-                    <TextInput
-                        placeholder={"Temp UUID"}
-                        placeholderTextColor={"rgba(255,255,255,0.8)"}
-                        onChangeText={(tempUUID) => this.setState({tempUUID})}
-                        underlineColorAndroid="rgba(0,0,0,0)"
-                    />
-                    <TouchableOpacity onPress={this.loginPressed}>
-                        <Text>
-                        PH
-                        </Text>
-                    </TouchableOpacity>
-                    {/*<SocialIcon*/}
-                        {/*title="Sign In With Facebook"*/}
-                        {/*button*/}
-                        {/*type="facebook"*/}
-                        {/*style={{width: width - 40, marginBottom: 40}}*/}
-                        {/*onPress={this.loginPressed}*/}
+                    {/*<TextInput*/}
+                        {/*placeholder={"Temp UUID"}*/}
+                        {/*placeholderTextColor={"rgba(255,255,255,0.8)"}*/}
+                        {/*onChangeText={(tempUUID) => this.setState({tempUUID})}*/}
+                        {/*underlineColorAndroid="rgba(0,0,0,0)"*/}
                     {/*/>*/}
+                    {/*<TouchableOpacity onPress={this.loginPressed}>*/}
+                        {/*<Text>*/}
+                        {/*PH*/}
+                        {/*</Text>*/}
+                    {/*</TouchableOpacity>*/}
+                    <SocialIcon
+                        title="Sign In With Facebook"
+                        button
+                        type="facebook"
+                        style={{width: width - 40, marginBottom: 40}}
+                        onPress={this.loginPressed}
+                    />
                     <View style={styles.textView}>
                         <Text style={styles.lowerText}>We use facebook to identify whether you are a zombie.</Text>
                         <Text style={styles.lowerText}>In our experience, zombies don't do well in crowds.</Text>

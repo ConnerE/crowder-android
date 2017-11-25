@@ -119,14 +119,16 @@ class Main extends React.Component<IProps> {
     }
 
     public checkIfExist = () => {
+        // alert(this.props.navigation.state.params.UUID);
         itemsRef.child(this.props.navigation.state.params.UUID).once("value", (snapshot) => {
+            alert('sss');
             if (snapshot.val() !== null) {
                 console.log(snapshot.val());
                 alert("Welcome Back");
                 this.setState({name: snapshot.val().fullName});
             } else {
                 // TODO: Add logic for welcoming new user
-                // alert("Welcome New User!!");
+                alert("Welcome New User!!");
                 this.props.navigation.navigate("NewUser", {UUID: this.props.navigation.state.params.UUID, returnData: this.returnName.bind(this)});
             }
         });
