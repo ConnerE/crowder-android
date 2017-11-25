@@ -1,13 +1,3 @@
-/* This is the login page for choosing the probes
- * Algo: The system will check whether the user has a preferred probe, if yes, scan the devices around, and if that
- * probe exists, connect to the probe automatically. After 10 seconds, the user will be about to choose other available
- * probes around, and the preferred probed will be changed automatically
- *
- * TODO: Catch all the errors / Get rid of all the weird warnings
- * TODO: Add color to the buttons next to the English description
- * by: Philip Wang
- * on: June 15th, 2017
- */
 
 import * as React from "react";
 import {
@@ -21,6 +11,8 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+    Image,
+    Alert
 } from "react-native";
 
 import { SocialIcon } from "react-native-elements";
@@ -38,18 +30,31 @@ interface IState {
     email: string;
     fullName: string;
     jobTitle: string;
-    photo_url: string;
     school: string;
+    url: string;
 }
 
 const rootRef = firebase.database().ref();
 const itemsRef = rootRef.child("users");
+let storageRef = firebase.storage().ref();
 
 class NewUser extends React.Component<IProps, IState> {
     constructor(props: any) {
         super(props);
-
+        this.state = {
+            url: "",
+            aboutMe: "",
+            email: "",
+            fullName: "",
+            jobTitle: "",
+            school: ""
+        };
     }
+
+    public returnUrl = (url) => {
+        console.log(url);
+        this.setState({url: url});
+    };
 
     public submit = () => {
         itemsRef.update({
@@ -67,8 +72,18 @@ class NewUser extends React.Component<IProps, IState> {
     };
 
     public updatePicture = () => {
-        this.props.navigation.navigate("PicturePicking");
+        Alert.alert(
+            'Choosing sources',
+            'Place choose below',
+            [
+                {text: 'Camera Roll', onPress: () => {this.props.navigation.navigate("PicturePicking", {UUID: this.props.navigation.state.params.UUID, returnUrl: this.returnUrl.bind(this)})}},
+                {text: 'Take Picture', onPress: () => {this.props.navigation.navigate("Camera", {UUID: this.props.navigation.state.params.UUID, returnUrl: this.returnUrl.bind(this)})}},
+                {text: 'Cancel', onPress: () => console.log('OK Pressed'), style: 'cancel'},
+            ],
+            { cancelable: false }
+        );
     };
+
 
     public render() {
         return (
@@ -79,6 +94,19 @@ class NewUser extends React.Component<IProps, IState> {
                         Update Picture
                     </Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={this.try}>
+                    <Text>
+                        Try Picture
+                    </Text>
+                </TouchableOpacity>
+
+                {this.state.url !== '' && <Image
+                    style={{width: 50, height: 50}}
+                    source={{uri: this.state.url}}
+                />
+                }
+
+
                 <TextInput
                     placeholder={"About Me"}
                     placeholderTextColor={"rgba(255,255,255,0.8)"}

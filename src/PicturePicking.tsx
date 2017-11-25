@@ -16,6 +16,8 @@ import {
 import CameraRollPicker from 'react-native-camera-roll-picker';
 import * as firebase from "firebase";
 import RNFetchBlob from 'react-native-fetch-blob'
+import { Icon, SocialIcon } from "react-native-elements";
+
 let storageRef = firebase.storage().ref();
 interface IProps {
     navigation: any;
@@ -37,28 +39,39 @@ export default class PicturePicking extends React.Component<IProps, IState> {
         };
     }
 
-    getSelectedImages(images, current) {
-        var num = images.length;
+    public static navigationOptions = ({navigation}) => {
+        return {
+            gesturesEnabled: false,
+            headerLeft: null,
+            headerRight: <Icon name="add" color="#000000" size={35}
+                               onPress={() => {
+                                   if (navigation.state.params.addNewGroup !== undefined) {
+                                       navigation.state.params.addNewGroup();
+                                   }
+                               }}/>,
+            headerStyle: {
+                marginTop: (Platform.OS === "ios") ? -20 : 0,
+            },
+            title: "Crowds",
 
-        this.setState({
-            num: num,
-            selected: images,
-        });
-
-        var metadata = {
-            contentType: 'image/jpeg',
         };
+    };
 
+    componentDidMount() {
+        this.props.navigation.setParams({addNewGroup: this.addNewGroup.bind(this)});
+    }
+
+    addNewGroup = async () => {
+        alert('Uploading');
         const Blob = RNFetchBlob.polyfill.Blob;
         window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
         window.Blob = Blob;
 
         const uploadImage = (uri, mime = 'application/octet-stream') => {
             return new Promise((resolve, reject) => {
-                const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
-                const sessionId = new Date().getTime();
-                let uploadBlob = null
-                const imageRef = storageRef.child(`${sessionId}`);
+                const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
+                let uploadBlob = null;
+                const imageRef = storageRef.child(this.props.navigation.state.params.UUID + '.jpg');
 
                 RNFetchBlob.fs.readFile(uploadUri, 'base64')
                     .then((data) => {
@@ -81,11 +94,27 @@ export default class PicturePicking extends React.Component<IProps, IState> {
             })
         };
 
-        uploadImage(current.uri);
+        await uploadImage(this.state.selected[0].uri);
+        storageRef.child(this.props.navigation.state.params.UUID + '.jpg').getDownloadURL().then((url) => {
+            alert('success');
+            this.props.navigation.state.params.returnUrl(url);
+            this.props.navigation.goBack(null);
+        }).catch(function(error) {
+            alert(error);
+        });
+    };
+
+    getSelectedImages = async (images, current) => {
+        var num = images.length;
+
+        this.setState({
+            num: num,
+            selected: images,
+        });
 
         console.log(current);
         console.log(this.state.selected);
-    }
+    };
 
     render() {
         return (
@@ -102,7 +131,7 @@ export default class PicturePicking extends React.Component<IProps, IState> {
                     removeClippedSubviews={false}
                     groupTypes='SavedPhotos'
                     batchSize={5}
-                    maximum={3}
+                    maximum={1}
                     selected={this.state.selected}
                     assetType='Photos'
                     imagesPerRow={3}

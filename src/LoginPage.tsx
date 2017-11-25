@@ -1,29 +1,16 @@
-/* This is the login page for choosing the probes
- * Algo: The system will check whether the user has a preferred probe, if yes, scan the devices around, and if that
- * probe exists, connect to the probe automatically. After 10 seconds, the user will be about to choose other available
- * probes around, and the preferred probed will be changed automatically
- *
- * TODO: Catch all the errors / Get rid of all the weird warnings
- * TODO: Add color to the buttons next to the English description
- * by: Philip Wang
- * on: June 15th, 2017
- */
-
 import * as React from "react";
 import {
     BackHandler,
     DeviceEventEmitter,
     Dimensions,
-    hableOpacity,
-    ImageBackground,
-    ImageBackground,
     Platform,
     StatusBar,
     StyleSheet,
-    Text
-    TextInput, Touc,
+    Text,
     View,
-    TouchableOpacity
+    TouchableOpacity,
+    Image,
+    TextInput
 
 } from "react-native";
 
@@ -125,18 +112,18 @@ class Login extends React.Component<IProps, IState> {
                         onChangeText={(tempUUID) => this.setState({tempUUID})}
                         underlineColorAndroid="rgba(0,0,0,0)"
                     />
-                    {/*<TouchableOpacity onPress={this.loginPressed}>*/}
-                        {/*<Text>*/}
-                        {/*PH*/}
-                        {/*</Text>*/}
-                    {/*</TouchableOpacity>*/}
-                    <SocialIcon
-                        title="Sign In With Facebook"
-                        button
-                        type="facebook"
-                        style={{width: width - 40, marginBottom: 40}}
-                        onPress={this.loginPressed}
-                    />
+                    <TouchableOpacity onPress={this.loginPressed}>
+                        <Text>
+                        PH
+                        </Text>
+                    </TouchableOpacity>
+                    {/*<SocialIcon*/}
+                        {/*title="Sign In With Facebook"*/}
+                        {/*button*/}
+                        {/*type="facebook"*/}
+                        {/*style={{width: width - 40, marginBottom: 40}}*/}
+                        {/*onPress={this.loginPressed}*/}
+                    {/*/>*/}
                     <View style={styles.textView}>
                         <Text style={styles.lowerText}>We use facebook to identify whether you are a zombie.</Text>
                         <Text style={styles.lowerText}>In our experience, zombies don't do well in crowds.</Text>
