@@ -14,32 +14,33 @@ import {
     Geolocation
 } from "react-native";
 
-import { Icon, SocialIcon } from "react-native-elements";
+import {Icon, SocialIcon, Button} from "react-native-elements";
 import * as Swiper from "react-native-swiper";
+
 const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
-import { List, ListItem, SearchBar } from "react-native-elements";
+import {List, ListItem, SearchBar} from "react-native-elements";
 import Swipeout from 'react-native-swipeout';
 
 import _ from "lodash";
 
-function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
     let R = 6371; // Radius of the earth in km
-    let dLat = deg2rad(lat2-lat1);  // deg2rad below
-    let dLon = deg2rad(lon2-lon1);
+    let dLat = deg2rad(lat2 - lat1);  // deg2rad below
+    let dLon = deg2rad(lon2 - lon1);
     let a =
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
         Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-        Math.sin(dLon/2) * Math.sin(dLon/2)
+        Math.sin(dLon / 2) * Math.sin(dLon / 2)
     ;
-    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     let d = R * c; // Distance in km
     // console.log("Just calculated a distance.");
     return d;
 }
 
 function deg2rad(deg) {
-    return deg * (Math.PI/180)
+    return deg * (Math.PI / 180)
 }
 
 interface IProps {
@@ -56,12 +57,13 @@ interface ICrowd {
     name: string;
     key: string;
     desc: string;
+    dis: string
 }
 
 // CRASHLYTICS STUFF
 const Fabric = require("react-native-fabric");
 
-const { Crashlytics } = Fabric;
+const {Crashlytics} = Fabric;
 
 Crashlytics.setUserName("erickson");
 
@@ -85,14 +87,16 @@ class Main extends React.Component<IProps> {
         return {
             gesturesEnabled: false,
             headerLeft: null,
-            headerRight: <Icon name="add" color="#000000" size={35}
+            headerTintColor: "#FFFFFF",
+            headerRight: <Icon name="add" color="#FFFFFF" size={35}
                                onPress={() => {
                                    if (navigation.state.params.addNewGroup !== undefined) {
                                        navigation.state.params.addNewGroup();
                                    }
                                }}/>,
             headerStyle: {
-                marginTop: (Platform.OS === "ios") ? -20 : 0,
+                backgroundColor: "#003EFF",
+                marginTop: (Platform.OS === 'ios') ? -20 : 0,
             },
             title: "Crowds",
 
@@ -121,7 +125,6 @@ class Main extends React.Component<IProps> {
     public checkIfExist = () => {
         // alert(this.props.navigation.state.params.UUID);
         itemsRef.child(this.props.navigation.state.params.UUID).once("value", (snapshot) => {
-            alert('sss');
             if (snapshot.val() !== null) {
                 console.log(snapshot.val());
                 alert("Welcome Back");
@@ -148,19 +151,18 @@ class Main extends React.Component<IProps> {
         crowdsRef.on("child_added", (snapshot) => {
                 const returnObj = snapshot.val();
                 let members = returnObj.members;
+                let distance = getDistanceFromLatLonInKm(returnObj.lat, returnObj.lng, this.state.lat, this.state.lng);
                 for (let key in members) {
                     let id = members[key].userID;
                     if (id == this.props.navigation.state.params.UUID) {
-                        const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
+                        const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc, dis: distance.toFixed(2).toString() + " kms away"};
                         dataSource[0].data.push(newCrowd);
                         this.forceUpdate();
                         return;
                     }
                 }
-
-                let distance = getDistanceFromLatLonInKm(returnObj.lat, returnObj.lng, this.state.lat, this.state.lng);
                 if (distance <= 1) {
-                    const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc};
+                    const newCrowd: ICrowd = {name: returnObj.name, key: snapshot.key, desc: returnObj.desc, dis: distance.toFixed(2).toString() + " kms away"};
                     dataSource[1].data.push(newCrowd);
                     this.forceUpdate();
                 }
@@ -195,44 +197,65 @@ class Main extends React.Component<IProps> {
             text: 'Delete',
             backgroundColor: 'red',
             underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-            onPress: () => { this.deleteGroup(item) }
+            onPress: () => {
+                this.deleteGroup(item)
+            }
         }];
 
         if (item.section.header !== "Explore Crowds") {
-            return <Swipeout right={swipeBtns}><TouchableOpacity onPress={() => {
-                this.navigateToCrowd(item.item.key, item.item.name)
-            }
-            }>
-                <View style={styles.group}>
-                    <Text style={styles.text}> {item.item.name}</Text>
-                </View>
-            </TouchableOpacity></Swipeout>;
+            return (
+                <Swipeout right={swipeBtns}>
+                    <TouchableOpacity onPress={() => {
+                        this.navigateToCrowd(item.item.key, item.item.name)
+                    }
+                    }>
+                        <ListItem
+                            roundAvatar
+                            title={item.item.name}
+                            subtitle={
+                                <View style={styles.subtitleView}>
+                                    <Text style={styles.ratingText}>{item.item.dis}</Text>
+                                </View>
+                            }
+                            underlayColor={"#FFFFFF"}
+                            badge={{ value: "0 messages", textStyle: { color: 'orange' }, containerStyle: { marginTop: 10 } }}
+                            containerStyle={{backgroundColor: '#FFFFFF'}} />
+                    </TouchableOpacity>
+                </Swipeout>
+            );
         } else {
-            return <TouchableOpacity onPress={() => {
-                if (item.section.header === "Explore Crowds") {
-                    for (let i = 0; i < dataSource[1].data.length; i++) {
-                        if (dataSource[1].data[i].key == item.item.key) {
-                            dataSource[0].data.push(dataSource[1].data[i]);
-                            dataSource[1].data.splice(i, 1);
-                            this.forceUpdate();
+            return (
+                <TouchableOpacity onPress={() => {
+                    if (item.section.header === "Explore Crowds") {
+                        for (let i = 0; i < dataSource[1].data.length; i++) {
+                            if (dataSource[1].data[i].key == item.item.key) {
+                                dataSource[0].data.push(dataSource[1].data[i]);
+                                dataSource[1].data.splice(i, 1);
+                                this.forceUpdate();
 
-                            let crowdRef = crowdsRef.child(item.item.key).child('members');
-                            crowdRef.push({
-                                userID: this.props.navigation.state.params.UUID
-                            });
+                                let crowdRef = crowdsRef.child(item.item.key).child('members');
+                                crowdRef.push({
+                                    userID: this.props.navigation.state.params.UUID
+                                });
+                            }
                         }
                     }
+                    this.navigateToCrowd(item.item.key, item.item.name)
                 }
-                this.navigateToCrowd(item.item.key, item.item.name)
-            }
-            }>
-                <View style={styles.group}>
-                    <Text style={styles.text}> {item.item.name}</Text>
-                </View>
-            </TouchableOpacity>;
+                }>
+                    <ListItem
+                        roundAvatar
+                        title={item.item.name}
+                        subtitle={
+                            <View style={styles.subtitleView}>
+                                <Text style={styles.ratingText}>{item.item.desc}</Text>
+                            </View>
+                        }
+                        underlayColor={"#FFFFFF"}
+                        badge={{ value: item.item.dis, textStyle: { color: 'orange' }, containerStyle: { marginTop: 10 } }}
+                        containerStyle={{backgroundColor: '#FFFFFF'}} />
+                </TouchableOpacity>)
         }
-
-
     };
 
     public renderHeader = (item) => {
@@ -240,13 +263,29 @@ class Main extends React.Component<IProps> {
     };
 
     public navigateToCrowd = (crowdKey, crowdName) => {
-        this.props.navigation.navigate("CrowdChat", {key: crowdKey, crowdName,
-                                                     UUID: this.props.navigation.state.params.UUID, fullName: this.state.name});
+        this.props.navigation.navigate("CrowdChat", {
+            key: crowdKey, crowdName,
+            UUID: this.props.navigation.state.params.UUID, fullName: this.state.name
+        });
+    };
+
+    public editInfo = () => {
+        this.props.navigation.navigate("EditInfo", {
+            UUID: this.props.navigation.state.params.UUID
+        });
     };
 
     public render() {
         return (
             <View style={styles.container}>
+                <View style={{marginBottom: 10, marginTop: -10}}>
+                    <Button
+                        small
+                        backgroundColor="#33A6FF"
+                        onPress={this.editInfo}
+                        icon={{name: 'envira', type: 'font-awesome'}}
+                        title='Edit My Information'/>
+                </View>
                 <SectionList
                     renderItem={this.renderItem}
                     renderSectionHeader={this.renderHeader}
@@ -263,7 +302,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#F3FCFF",
         flex: 1,
         justifyContent: "center",
-        padding: 20,
         paddingTop: 40,
     },
 
@@ -279,9 +317,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
 
-    wrapper: {
-
-    },
+    wrapper: {},
 
     text: {
         color: "#000000",
@@ -293,6 +329,19 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         marginRight: 40,
     },
+    subtitleView: {
+        flexDirection: 'row',
+        paddingLeft: 10,
+        paddingTop: 5
+    },
+    ratingImage: {
+        height: 19.21,
+        width: 100
+    },
+    ratingText: {
+        paddingLeft: 10,
+        color: 'grey'
+    }
 
 });
 
