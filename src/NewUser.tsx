@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import {
     BackHandler,
@@ -12,12 +11,15 @@ import {
     TouchableOpacity,
     View,
     Image,
-    Alert
+    Alert,
+    ScrollView
 } from "react-native";
 
-import { SocialIcon } from "react-native-elements";
+import {SocialIcon, Button} from "react-native-elements";
 import * as Swiper from "react-native-swiper";
 import CameraRollPicker from 'react-native-camera-roll-picker';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
 
@@ -32,11 +34,13 @@ interface IState {
     jobTitle: string;
     school: string;
     url: string;
+    pictureDone: boolean
 }
 
 const rootRef = firebase.database().ref();
 const itemsRef = rootRef.child("users");
 let storageRef = firebase.storage().ref();
+import {Icon} from "react-native-elements";
 
 class NewUser extends React.Component<IProps, IState> {
     constructor(props: any) {
@@ -47,16 +51,43 @@ class NewUser extends React.Component<IProps, IState> {
             email: "",
             fullName: "",
             jobTitle: "",
-            school: ""
+            school: "",
+            pictureDone: false
         };
     }
 
+    componentDidMount() {
+        this.props.navigation.setParams({submit: this.submit.bind(this)});
+    }
+
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: 'Creating User Info',
+            headerTintColor: "#FFFFFF",
+            gesturesEnabled: false,
+            headerStyle: {
+                backgroundColor: "#003EFF",
+                marginTop: (Platform.OS === 'ios') ? -20 : 0,
+            },
+        };
+    };
+
     public returnUrl = (url) => {
-        console.log(url);
-        this.setState({url: url});
+        this.setState({url: url, pictureDone: true});
     };
 
     public submit = () => {
+        if (this.state.aboutMe == "" || this.state.email == "" || this.state.fullName == "" || this.state.jobTitle == "" || this.state.school == "") {
+            alert('Please fill in information for all');
+            return;
+        }
+
+        if (!this.state.pictureDone) {
+            alert('Please upload a picture by clicking the profile');
+            return;
+        }
+
+
         itemsRef.update({
             [this.props.navigation.state.params.UUID]: {
                 aboutMe: this.state.aboutMe,
@@ -76,72 +107,118 @@ class NewUser extends React.Component<IProps, IState> {
             'Choosing sources',
             'Place choose below',
             [
-                {text: 'Camera Roll', onPress: () => {this.props.navigation.navigate("PicturePicking", {UUID: this.props.navigation.state.params.UUID, returnUrl: this.returnUrl.bind(this)})}},
-                {text: 'Take Picture', onPress: () => {this.props.navigation.navigate("Camera", {UUID: this.props.navigation.state.params.UUID, returnUrl: this.returnUrl.bind(this)})}},
+                {
+                    text: 'Camera Roll', onPress: () => {
+                    this.props.navigation.navigate("PicturePicking", {
+                        UUID: this.props.navigation.state.params.UUID,
+                        returnUrl: this.returnUrl.bind(this)
+                    })
+                }
+                },
+                {
+                    text: 'Take Picture', onPress: () => {
+                    this.props.navigation.navigate("Camera", {
+                        UUID: this.props.navigation.state.params.UUID,
+                        returnUrl: this.returnUrl.bind(this)
+                    })
+                }
+                },
                 {text: 'Cancel', onPress: () => console.log('OK Pressed'), style: 'cancel'},
             ],
-            { cancelable: false }
+            {cancelable: false}
         );
     };
 
 
     public render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: '#FFFFFF'}}>
                 <StatusBar hidden={true}/>
-                <TouchableOpacity onPress={this.updatePicture}>
-                    <Text>
-                        Update Picture
-                    </Text>
+                <TouchableOpacity style={styles.pictureViewBig} onPress={this.updatePicture}>
+                    {this.state.url !== '' && <Image
+                        style={styles.pictureViewSmall}
+                        source={{uri: this.state.url}}
+                    />}
+                    {this.state.url === '' && <Image
+                        style={styles.pictureViewSmall}
+                        source={require('../asset/profileP.png')}
+                    />}
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this.try}>
-                    <Text>
-                        Try Picture
-                    </Text>
-                </TouchableOpacity>
-
-                {this.state.url !== '' && <Image
-                    style={{width: 50, height: 50}}
-                    source={{uri: this.state.url}}
-                />
-                }
-
-
-                <TextInput
-                    placeholder={"About Me"}
-                    placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(aboutMe) => this.setState({aboutMe})}
-                    underlineColorAndroid="rgba(0,0,0,0)"
-                />
-                <TextInput
-                    placeholder={"Email"}
-                    placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(email) => this.setState({email})}
-                    underlineColorAndroid="rgba(0,0,0,0)"
-                />
-                <TextInput
-                    placeholder={"Full Name"}
-                    placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(fullName) => this.setState({fullName})}
-                    underlineColorAndroid="rgba(0,0,0,0)"
-                />
-                <TextInput
-                    placeholder={"Job Title"}
-                    placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(jobTitle) => this.setState({jobTitle})}
-                    underlineColorAndroid="rgba(0,0,0,0)"
-                />
-                <TextInput
-                    placeholder={"School"}
-                    placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(school) => this.setState({school})}
-                    underlineColorAndroid="rgba(0,0,0,0)"
-                />
-
-                <TouchableOpacity onPress={this.submit}>
-                    <Text>Submit</Text>
-                </TouchableOpacity>
-
+                <ScrollView style={{marginTop: 20}}>
+                    <View style={styles.iconText}>
+                        <View style={{marginTop: 20, flex: 0.08}}>
+                            <Icon name="user" size={20} color="#1d24ff"/>
+                        </View>
+                        <View style={{flex: 0.92}}>
+                            <TextInput
+                                placeholder={"Full Name"}
+                                placeholderTextColor={"#003EFF"}
+                                onChangeText={(fullName) => this.setState({fullName})}
+                                underlineColorAndroid="#003EFF"
+                            />
+                        </View>
+                    </View>
+                    <View style={styles.iconText}>
+                        <View style={{marginTop: 20, flex: 0.08}}>
+                            <Icon name="mail-forward" size={20} color="#1d24ff"/>
+                        </View>
+                        <View style={{flex: 0.92}}>
+                            <TextInput
+                                placeholder={"Email"}
+                                placeholderTextColor={"#003EFF"}
+                                onChangeText={(email) => this.setState({email})}
+                                underlineColorAndroid="#003EFF"
+                            />
+                        </View>
+                    </View>
+                    <View style={styles.iconText}>
+                        <View style={{marginTop: 20, flex: 0.08}}>
+                            <Icon name="book" size={20} color="#1d24ff"/>
+                        </View>
+                        <View style={{flex: 0.92}}>
+                            <TextInput
+                                placeholder={"Graduating University"}
+                                placeholderTextColor={"#003EFF"}
+                                onChangeText={(school) => this.setState({school})}
+                                underlineColorAndroid="#003EFF"
+                            />
+                        </View>
+                    </View>
+                    <View style={styles.iconText}>
+                        <View style={{marginTop: 20, flex: 0.08}}>
+                            <Icon name="briefcase" size={20} color="#1d24ff"/>
+                        </View>
+                        <View style={{flex: 0.92}}>
+                            <TextInput
+                                placeholder={"Job Title"}
+                                placeholderTextColor={"#003EFF"}
+                                onChangeText={(jobTitle) => this.setState({jobTitle})}
+                                underlineColorAndroid="#003EFF"
+                            />
+                        </View>
+                    </View>
+                    <View style={styles.iconText}>
+                        <View style={{marginTop: 20, flex: 0.08}}>
+                            <Icon name="info" size={20} color="#1d24ff"/>
+                        </View>
+                        <View style={{flex: 0.92}}>
+                            <TextInput
+                                placeholder={"About Me"}
+                                placeholderTextColor={"#003EFF"}
+                                onChangeText={(aboutMe) => this.setState({aboutMe})}
+                                underlineColorAndroid="#003EFF"
+                            />
+                        </View>
+                    </View>
+                </ScrollView>
+                <View style={{marginTop: 20, marginBottom:20}}>
+                    <Button
+                        small
+                        backgroundColor="#003EFF"
+                        onPress={this.submit}
+                        icon={{name: 'envira', type: 'font-awesome'}}
+                        title='Submit'/>
+                </View>
             </View>
         );
     }
@@ -151,24 +228,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-
-    wrapper: {
-
+    pictureViewBig: {
+        width: width * 0.5,
+        height: width * 0.5,
+        marginLeft: width * 0.25,
+        marginTop: 20
     },
-
-    text: {
-        color: "#fff",
-        fontSize: 30,
-        fontWeight: "bold",
+    pictureViewSmall: {
+        width: width * 0.5,
+        height: width * 0.5,
     },
-
-    image: {
+    iconText: {
         flex: 1,
-    },
-
-    textView: {
-        marginLeft: 40,
-        marginRight: 40,
+        flexDirection: "row",
+        marginLeft: 20
     },
 
 });
