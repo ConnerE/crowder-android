@@ -28,21 +28,32 @@ interface IState {
 
 
 class CrowdChat extends React.Component<IProps, IState> {
-
-    public static navigationOptions = ({navigation}) => {
+    static navigationOptions = ({navigation}) => {
         return {
             title: navigation.state.params.title,
+            headerTintColor: "#FFFFFF",
+            gesturesEnabled: false,
+            headerStyle: {
+                backgroundColor: "#003EFF",
+                marginTop: (Platform.OS === 'ios') ? -20 : 0,
+            },
+            headerRight: <Icon name="info" color="#FFFFFF" size={35}
+                               onPress={() => {
+                                   if (navigation.state.params.gotoInfo !== undefined) {
+                                       navigation.state.params.gotoInfo();
+                                   }
+                               }}/>,
         };
-    }
+    };
     public chatRef: any;
     constructor(props) {
         super(props);
         this.state = {
             messages: [],
         };
-        this.props.navigation.setParams({title: this.props.navigation.state.params.crowdName});
         this.chatRef = chatChanelRef.child(this.props.navigation.state.params.key);
     }
+
     public getChat = () => {
         this.chatRef.limitToLast(20).on("child_added", (snapshot) => {
                 const returnObj = snapshot.val();
@@ -62,8 +73,13 @@ class CrowdChat extends React.Component<IProps, IState> {
         );
     };
 
+    public gotoInfo = () => {
+        this.props.navigation.navigate("GroupInfo", {groupID: this.props.navigation.state.params.key});
+    };
+
     private componentDidMount() {
         this.getChat();
+        this.props.navigation.setParams({gotoInfo: this.gotoInfo.bind(this), title: this.props.navigation.state.params.crowdName});
     }
 
     private onSend(messages = []) {
