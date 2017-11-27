@@ -8,7 +8,9 @@ import {
     BackHandler,
     DeviceEventEmitter,
     Dimensions,
+    ImageBackground,
     Platform,
+    ScrollView,
     StatusBar,
     StyleSheet,
     Text,
@@ -40,6 +42,7 @@ interface IState {
 
 const rootRef = firebase.database().ref();
 const itemsRef = rootRef.child("users");
+let storageRef = firebase.storage().ref();
 
 class UserInfo extends React.Component<IProps, IState> {
     constructor(props: any) {
@@ -59,6 +62,7 @@ class UserInfo extends React.Component<IProps, IState> {
     }
 
     public getUserInfo = () => {
+        // console.log("Getting user info.");
         itemsRef.child(this.props.navigation.state.params._id).once("value", (snapshot) => {
             if (snapshot.val() !== null) {
                 this.setState({
@@ -73,49 +77,74 @@ class UserInfo extends React.Component<IProps, IState> {
                 alert('You have just found a bug')
             }
         });
+
+        storageRef.child(this.props.navigation.state.params.UUID + '.jpg').getDownloadURL().then((url) => {
+            this.setState({photo_url: url})
+        }).catch(function(error) {
+            alert(error);
+        });
     };
 
     render() {
+
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: "#FFFFFF"}}>
                 <StatusBar hidden={true}/>
                 {!this.state.ready && (<Text>Loading....</Text>)}
                 {this.state.ready && (
-                    <View>
-                        <Text style={styles.titleText}>Hi, I'm {this.state.fullName}</Text>
-                        <Text style={styles.aboutText}>{this.state.aboutMe}</Text>
+                    <ScrollView style={{marginTop: 20}}>
+                        <View style={styles.slide}>
+                            {this.state.photo_url !== '' && <ImageBackground
+                                style={styles.pictureView}
+                                source={{uri: this.state.photo_url}}
+                            />}
+                            {this.state.photo_url === '' && <ImageBackground
+                                style={styles.pictureView}
 
-
-                        <View style={styles.iconText}>
-                            <View>
-                                <Icon name="graduation-cap" size={20} color="#1d24ff" />
-                            </View>
-                            <View>
-                                <Text style={styles.text}>  {this.state.school}</Text>
-                            </View>
+                                source={require('../asset/profileP.png')}
+                            />}
                         </View>
 
-                        <View style={styles.iconText}>
-                            <View>
-                                <Icon name="briefcase" size={20} color="#1d24ff" />
-                            </View>
-                            <View>
-                                <Text style={styles.text}>    {this.state.jobTitle}</Text>
-                            </View>
-                        </View>
+                        <View>
 
-                        <View style={styles.iconText}>
-                            <View>
-                                <Icon name="mail-alt" size={20} color="#1d24ff" />
-                            </View>
-                            <View>
-                                <Text style={styles.text}>    {this.state.email}</Text>
+                            <View style={{flex: 0.92}}>
+                                <Text style={styles.titleText}>{this.state.fullName}, {this.state.school}</Text>
                             </View>
                         </View>
 
 
+                        <View style={styles.iconText}>
+                            <View style={{marginTop: 30, flex: 0.08}}>
+                                <Icon name="mail-forward" size={20} color="#1d24ff"/>
+                            </View>
+                            <View style={{flex: 0.92}}>
+                                <Text style={styles.text}>{this.state.email}</Text>
+                            </View>
+                        </View>
 
-                    </View>)}
+                        <View style={styles.underline}/>
+
+
+                        <View style={styles.iconText}>
+                            <View style={{marginTop: 20, flex: 0.08}}>
+                                <Icon name="briefcase" size={20} color="#1d24ff"/>
+                            </View>
+                            <View style={{flex: 0.92}}>
+                                <Text style={styles.text}>{this.state.jobTitle}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.underline}/>
+
+                        <View style={styles.iconText}>
+                            <View style={{flex: 0.92}}>
+                                <Text style={styles.aboutText}>{this.state.aboutMe}</Text>
+                            </View>
+                        </View>
+
+
+
+                    </ScrollView>)}
 
 
             </View>
@@ -127,8 +156,8 @@ const styles = StyleSheet.create({
     aboutText: {
         color: "#000000",
         fontSize: 15,
-        fontWeight: "bold",
         textAlign: "center",
+        paddingTop: 15,
     },
 
     container: {
@@ -136,13 +165,19 @@ const styles = StyleSheet.create({
     },
 
     iconText: {
+        alignItems: 'center',
         flexDirection: "row",
-        paddingTop: 15,
-        paddingBottom: 15,
+        // paddingTop: 15,
         paddingLeft: 15,
     },
     image: {
         flex: 1,
+    },
+    pictureView: {
+        width: width * 0.5,
+        height: width * 0.5,
+        marginLeft: width * 0.25,
+        marginTop: 20
     },
     slide: {
         backgroundColor: "transparent",
@@ -155,18 +190,27 @@ const styles = StyleSheet.create({
     },
     titleText: {
         color: "#000000",
-        fontSize: 50,
+        fontSize: 23,
+        paddingTop: 15,
         fontFamily: "SFCartoonistHand-Bold",
         textAlign: "center",
     },
     text: {
-        color: "#00096a",
+        flex: -1.00,
+        color: "#000000",
         fontSize: 12,
+        // paddingTop: 10,
 
     },
     textView: {
         marginLeft: 40,
         marginRight: 40,
+    },
+    underline: {
+        borderTopColor: '#003EFF',
+        borderTopWidth: 1,
+        marginLeft: 40,
+        marginRight: 4,
     },
     wrapper: {
     },

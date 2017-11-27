@@ -12,7 +12,7 @@ import {
     View,
     Image,
     Alert,
-    ScrollView
+    ScrollView,
 } from "react-native";
 
 import {SocialIcon, Button} from "react-native-elements";

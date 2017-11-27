@@ -10,6 +10,7 @@ import {
     View,
     TouchableOpacity,
     Image,
+    ImageBackground,
     TextInput
 
 } from "react-native";
@@ -92,44 +93,44 @@ class Login extends React.Component<IProps, IState> {
             <View style={styles.container}>
                 <StatusBar hidden={true}/>
                 <View style={{flex: 0.65}}>
-                    {/*<Swiper style={styles.wrapper} horizontal={true} autoplay>*/}
-                        {/*<View style={styles.slide}>*/}
-                            {/*<ImageBackground*/}
-                                {/*source={require("./img/group1.jpg")}*/}
-                                {/*style={styles.image}*/}
-                                {/*>*/}
-                            {/*<Text style={styles.text}>Welcome to Crowder</Text>*/}
-                            {/*</ImageBackground>*/}
-                        {/*</View>*/}
+                    <Swiper style={styles.wrapper} horizontal={true} autoplay={false}>
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require("../asset/login_img/group1.jpg")}
+                                style={styles.image}
+                                >
+                            <Text style={styles.text}>Welcome to Crowder</Text>
+                            </ImageBackground>
+                        </View>
 
-                        {/*<View style={styles.slide}>*/}
-                            {/*<ImageBackground*/}
-                                {/*source={require("./img/group2.jpg")}*/}
-                                {/*style={styles.image}*/}
-                            {/*>*/}
-                                {/*<Text style={styles.text}>Explore around you</Text>*/}
-                            {/*</ImageBackground>*/}
-                        {/*</View>*/}
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require("../asset/login_img/group2.jpg")}
+                                style={styles.image}
+                            >
+                                <Text style={styles.textBottom}>Explore around</Text>
+                            </ImageBackground>
+                        </View>
 
-                        {/*<View style={styles.slide}>*/}
-                            {/*<ImageBackground*/}
-                                {/*source={require("./img/group3.jpg")}*/}
-                                {/*style={styles.image}*/}
-                            {/*>*/}
-                                {/*<Text style={styles.text}>Find stuff you're into</Text>*/}
-                            {/*</ImageBackground>*/}
-                        {/*</View>*/}
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require("../asset/login_img/group3.jpg")}
+                                style={styles.image}
+                            >
+                                <Text style={styles.text}>Find stuff you're into</Text>
+                            </ImageBackground>
+                        </View>
 
-                        {/*<View style={styles.slide}>*/}
-                            {/*<ImageBackground*/}
-                                {/*source={require("./img/group4.jpg")}*/}
-                                {/*style={styles.image}*/}
-                            {/*>*/}
-                                {/*<Text style={styles.text}>Meet a chill crowd</Text>*/}
-                            {/*</ImageBackground>*/}
-                        {/*</View>*/}
+                        <View style={styles.slide}>
+                            <ImageBackground
+                                source={require("../asset/login_img/group4.jpg")}
+                                style={styles.image}
+                            >
+                                <Text style={styles.text}>Meet a chill crowd</Text>
+                            </ImageBackground>
+                        </View>
 
-                    {/*</Swiper>*/}
+                    </Swiper>
                 </View>
                 <View style={styles.lowerView}>
                     {/*<TextInput*/}
@@ -138,11 +139,11 @@ class Login extends React.Component<IProps, IState> {
                         {/*onChangeText={(tempUUID) => this.setState({tempUUID})}*/}
                         {/*underlineColorAndroid="rgba(0,0,0,0)"*/}
                     {/*/>*/}
-                    {/*<TouchableOpacity onPress={this.loginPressed}>*/}
-                        {/*<Text>*/}
-                        {/*PH*/}
-                        {/*</Text>*/}
-                    {/*</TouchableOpacity>*/}
+                    <TouchableOpacity onPress={this.loginPressed}>
+                        <Text>
+                        PH
+                        </Text>
+                    </TouchableOpacity>
                     <SocialIcon
                         title="Sign In With Facebook"
                         button
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
     image: {
         alignItems: "center",
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "space-between",
     },
 
     lowerText: {
@@ -196,6 +197,15 @@ const styles = StyleSheet.create({
 
     text: {
         color: "#fff",
+        fontSize: 40,
+        fontWeight: "bold",
+        justifyContent: "center",
+        textAlign: "center",
+    },
+
+    textBottom: {
+        color: "#fff",
+        flex: -0.90,
         fontSize: 40,
         fontWeight: "bold",
         justifyContent: "center",
