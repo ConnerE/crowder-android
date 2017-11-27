@@ -61,6 +61,18 @@ class UserInfo extends React.Component<IProps, IState> {
         this.getUserInfo();
     }
 
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: 'User Information',
+            headerTintColor: "#FFFFFF",
+            gesturesEnabled: false,
+            headerStyle: {
+                backgroundColor: "#003EFF",
+                marginTop: (Platform.OS === 'ios') ? -20 : 0,
+            },
+        };
+    };
+
     public getUserInfo = () => {
         // console.log("Getting user info.");
         itemsRef.child(this.props.navigation.state.params._id).once("value", (snapshot) => {

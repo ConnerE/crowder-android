@@ -99,7 +99,7 @@ class CrowdChat extends React.Component<IProps, IState> {
     private render() {
         return (
             <View style={{flex: 1}}>
-                <StatusBar hidden={false}/>
+                <StatusBar hidden={true}/>
                 <GiftedChat
                     messages={this.state.messages}
                     onSend={(messages) => this.onSend(messages)}
