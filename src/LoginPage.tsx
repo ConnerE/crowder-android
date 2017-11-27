@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
 
     lowerView : {
         alignItems: "center",
-        backgroundColor: "#02efd4",
+        backgroundColor: "#FFCD00",
         flex: 0.35,
         justifyContent: "center",
     },
