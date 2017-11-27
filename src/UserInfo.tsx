@@ -90,7 +90,7 @@ class UserInfo extends React.Component<IProps, IState> {
             }
         });
 
-        storageRef.child(this.props.navigation.state.params.UUID + '.jpg').getDownloadURL().then((url) => {
+        storageRef.child(this.props.navigation.state.params._id + '.jpg').getDownloadURL().then((url) => {
             this.setState({photo_url: url})
         }).catch(function(error) {
             alert(error);
