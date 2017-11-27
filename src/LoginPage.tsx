@@ -139,11 +139,11 @@ class Login extends React.Component<IProps, IState> {
                         {/*onChangeText={(tempUUID) => this.setState({tempUUID})}*/}
                         {/*underlineColorAndroid="rgba(0,0,0,0)"*/}
                     {/*/>*/}
-                    <TouchableOpacity onPress={this.loginPressed}>
-                        <Text>
-                        PH
-                        </Text>
-                    </TouchableOpacity>
+                    {/*<TouchableOpacity onPress={this.loginPressed}>*/}
+                        {/*<Text>*/}
+                        {/*PH*/}
+                        {/*</Text>*/}
+                    {/*</TouchableOpacity>*/}
                     <SocialIcon
                         title="Sign In With Facebook"
                         button
