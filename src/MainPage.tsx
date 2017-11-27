@@ -99,7 +99,6 @@ class Main extends React.Component<IProps> {
                 marginTop: (Platform.OS === 'ios') ? -20 : 0,
             },
             title: "Crowds",
-
         };
     };
 

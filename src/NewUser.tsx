@@ -69,6 +69,7 @@ class NewUser extends React.Component<IProps, IState> {
                 backgroundColor: "#003EFF",
                 marginTop: (Platform.OS === 'ios') ? -20 : 0,
             },
+            buttonLeft: null
         };
     };
 

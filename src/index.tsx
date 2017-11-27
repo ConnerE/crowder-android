@@ -11,7 +11,8 @@ import UserInfo from './UserInfo';
 import PicturePicking from './PicturePicking';
 import CameraPage from './CameraPage';
 import PictureConfirm from './PictureComfirm';
-import EditInfo from './EditInfo'
+import EditInfo from './EditInfo';
+import GroupInfo from './GroupInfo'
 
 const Navigator = StackNavigator({
     Home: {screen: LoginScreen},
@@ -23,7 +24,8 @@ const Navigator = StackNavigator({
     PicturePicking: {screen: PicturePicking},
     Camera: {screen: CameraPage},
     PictureConfirm: {screen: PictureConfirm},
-    EditInfo: {screen: EditInfo}
+    EditInfo: {screen: EditInfo},
+    GroupInfo: {screen: GroupInfo}
 }, {
     initialRouteName: "Home",
 });

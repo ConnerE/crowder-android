@@ -15,26 +15,27 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+    ScrollView
 } from "react-native";
 
-import { SocialIcon } from "react-native-elements";
-import * as Swiper from "react-native-swiper";
+import {SocialIcon, Button} from "react-native-elements";
+var MapView = require('react-native-maps');
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 const {width} = Dimensions.get("window");
 import * as firebase from "firebase";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import {GooglePlacesAutocomplete} from "react-native-google-places-autocomplete";
 
 interface IProps {
     navigation: any;
 }
 
 interface IState {
-    address: string;
-    create_date: string;
-    creator_id: string;
     desc: string;
     lat: number;
     lng: number;
     name: string;
+    region: any
 }
 
 const rootRef = firebase.database().ref();
@@ -43,10 +44,44 @@ const crowdsRef = rootRef.child("crowds");
 class NewGroup extends React.Component<IProps, IState> {
     constructor(props: any) {
         super(props);
-
+        this.state = {
+            desc: '',
+            lat: 0,
+            lng: 0,
+            name: '',
+            region: {
+                latitude: 42.405804,
+                longitude: -71.11956,
+                latitudeDelta: 0.02,
+                longitudeDelta: 0.01,
+            }
+        };
     }
 
+    map: any;
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: 'Creating New Crowd',
+            headerTintColor: "#FFFFFF",
+            gesturesEnabled: false,
+            headerStyle: {
+                backgroundColor: "#003EFF",
+                marginTop: (Platform.OS === 'ios') ? -20 : 0,
+            },
+        };
+    };
+
     public submit = () => {
+        if (this.state.name == "" || this.state.desc == "") {
+            alert('Please input value for all fields');
+            return;
+        }
+
+        if (this.state.lat == 0 || this.state.lng == 0) {
+            alert('Please input location');
+            return;
+        }
+
         crowdsRef.push({
             name: this.state.name,
             desc: this.state.desc,
@@ -60,64 +95,107 @@ class NewGroup extends React.Component<IProps, IState> {
 
     public render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={styles.container}>
                 <StatusBar hidden={true}/>
-                <TextInput
-                    placeholder={"Name"}
-                    placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(name) => this.setState({name})}
-                    underlineColorAndroid="rgba(0,0,0,0)"
-                />
-                <TextInput
-                    placeholder={"Desc"}
-                    placeholderTextColor={"rgba(255,255,255,0.8)"}
-                    onChangeText={(desc) => this.setState({desc})}
-                    underlineColorAndroid="rgba(0,0,0,0)"
-                />
+                <ScrollView>
+                    <View style={styles.iconText}>
+                        <View style={{marginTop: 20, flex: 0.08}}>
+                            <Icon name="search" size={20} color="#1d24ff"/>
+                        </View>
+                        <View style={{flex: 0.92}}>
+                            <TextInput
+                                placeholder={"What's your crowd name"}
+                                placeholderTextColor={"#003EFF"}
+                                onChangeText={(name) => this.setState({name})}
+                                underlineColorAndroid="#003EFF"
+                            />
+                        </View>
+                    </View>
+                    <View style={styles.iconText}>
+                        <View style={{marginTop: 20, flex: 0.08}}>
+                            <Icon name="heart" size={20} color="#1d24ff"/>
+                        </View>
+                        <View style={{flex: 0.92}}>
+                            <TextInput
+                                placeholder={"Describe the functionality of your crowd"}
+                                placeholderTextColor={"#003EFF"}
+                                onChangeText={(desc) => this.setState({desc})}
+                                underlineColorAndroid="#003EFF"
+                            />
+                        </View>
+                    </View>
+                            <GooglePlacesAutocomplete
+                                placeholder="Enter Locations"
+                                placeholderTextColor={"#003EFF"}
+                                minLength={2}
+                                autoFocus={false}
+                                underlineColorAndroid="#003EFF"
+                                returnKeyType={"default"}
+                                fetchDetails={true}
+                                styles={{
+                                    predefinedPlacesDescription: {
+                                        color: "#003EFF",
+                                    },
+                                    textInput: {
+                                        color: "#003EFF",
+                                        height: 38,
+                                        backgroundColor: "white",
 
-                <GooglePlacesAutocomplete
-                    placeholder="Enter Location"
-                    minLength={2}
-                    autoFocus={false}
-                    returnKeyType={"default"}
-                    fetchDetails={true}
-                    styles={{
-                        predefinedPlacesDescription: {
-                            color: "#1faadb",
-                        },
-                        textInput: {
-                            color: "#5d5d5d",
-                            fontSize: 16,
-                            height: 38,
-                            marginLeft: 0,
-                            marginRight: 0,
-                        },
-                        textInputContainer: {
-                            backgroundColor: "rgba(0,0,0,0)",
-                            borderBottomWidth: 0,
-                            borderTopWidth: 0,
-                        },
-                    }}
-                    query={{
-                        // available options: https://developers.google.com/places/web-service/autocomplete
-                        key: "AIzaSyCxbfxGUV05x6_Z0qVFmVBB1vIR1063aow",
-                        language: "en", // language of the results
-                    }}
-                    onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-                        this.setState({
-                            lat: details.geometry.location.lat,
-                            lng: details.geometry.location.lng,
-                        });
-                    }}
-                    currentLocation={true}
-                />
-
-                <View style={styles.submitView}>
-                    <TouchableOpacity onPress={this.submit}>
-                        <Text>Submit</Text>
-                    </TouchableOpacity>
-                </View>
-
+                                    },
+                                    textInputContainer: {
+                                        borderBottomWidth: 0,
+                                        borderTopWidth: 0,
+                                        backgroundColor: "white",
+                                    },
+                                }}
+                                query={{
+                                    key: "AIzaSyCxbfxGUV05x6_Z0qVFmVBB1vIR1063aow",
+                                    language: "en", // language of the results
+                                }}
+                                onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+                                    let newRegin = {
+                                        latitude: details.geometry.location.lat,
+                                        longitude: details.geometry.location.lng,
+                                        latitudeDelta: 0.02,
+                                        longitudeDelta: 0.01,
+                                    };
+                                    this.setState({
+                                        lat: details.geometry.location.lat,
+                                        lng: details.geometry.location.lng,
+                                        region: newRegin
+                                    });
+                                    this.map.animateToRegion(newRegin, 2);
+                                }}
+                                currentLocation={true}
+                            />
+                    <View style={styles.mapView}>
+                        <MapView
+                            style={{
+                                height: Dimensions.get('window').height * 0.4,
+                                width: Dimensions.get('window').width,
+                                margin: 0
+                            }}
+                            initialRegion={this.state.region}
+                            showsUserLocation={true}
+                            ref={ref => {
+                                this.map = ref;
+                            }}
+                        >
+                            {this.state.lat !== 0 && <MapView.Marker
+                                coordinate={this.state.region}
+                                title={"Here is your group"}
+                            />}
+                        </MapView>
+                    </View>
+                    <View style={{marginTop: 20, marginBottom:20}}>
+                        <Button
+                            small
+                            backgroundColor="#003EFF"
+                            onPress={this.submit}
+                            icon={{name: 'envira', type: 'font-awesome'}}
+                            title='Submit'/>
+                    </View>
+                </ScrollView>
             </View>
         );
     }
@@ -126,6 +204,7 @@ class NewGroup extends React.Component<IProps, IState> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: 'white'
     },
     image: {
         flex: 1,
@@ -148,8 +227,17 @@ const styles = StyleSheet.create({
         marginLeft: 40,
         marginRight: 40,
     },
-    wrapper: {
+    wrapper: {},
+    iconText: {
+        flex: 1,
+        flexDirection: "row",
+        marginLeft: 20
     },
+    mapView: {
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10
+    }
 });
 
 export default NewGroup;
